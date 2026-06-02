@@ -102,7 +102,7 @@ app.post("/send", contactLimiter, async (req, res) => {
   try {
     await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: ["puligundlaguna321@gmail.com"],
+      to: ["puligundlagunadeep321@gmail.com"],
       subject: "🚀 Portfolio Contact Message",
       replyTo: email,
       html: buildAdminEmailHtml({ name, phone, email, message })
@@ -152,7 +152,7 @@ app.use((error, req, res, next) => {
 
   return res.status(500).json({
     success: false,
-    message: "Internal server error."
+    message: "Internal server error.",
   });
 });
 
