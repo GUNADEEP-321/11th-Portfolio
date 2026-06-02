@@ -8,6 +8,9 @@ const { Resend } = require("resend");
 require("dotenv").config();
 
 const app = express();
+
+app.set("trust proxy", 1); // ← IMPORTANT FIX FOR RENDER
+
 const PORT = process.env.PORT || 5000;
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -34,11 +37,11 @@ app.post("/send", contactLimiter, async (req, res) => {
 
   try {
 
-    // Mail to YOU
     await resend.emails.send({
       from: "onboarding@resend.dev",
       to: "puligundlaguna321@gmail.com",
       subject: "🚀 New Portfolio Message",
+
       html: `
         <h2>New Contact Form Submission</h2>
 
@@ -49,27 +52,25 @@ app.post("/send", contactLimiter, async (req, res) => {
       `
     });
 
-    // Auto Reply
     await resend.emails.send({
       from: "onboarding@resend.dev",
       to: email,
       subject: "Thanks for contacting Guna 🚀",
+
       html: `
         <h2>Hi ${name} 👋</h2>
 
-        <p>
-          Thank you for contacting me through my portfolio website.
-        </p>
+        <p>Thank you for contacting me.</p>
 
-        <p>
-          I received your message successfully and I'll reply soon.
-        </p>
+        <p>I received your message successfully and I'll reply soon.</p>
 
         <br>
 
         <strong>— Guna</strong>
       `
     });
+
+    console.log("EMAIL SENT SUCCESSFULLY 🚀");
 
     return res.status(200).json({
       success: true,
@@ -78,7 +79,7 @@ app.post("/send", contactLimiter, async (req, res) => {
 
   } catch (err) {
 
-    console.error(err);
+    console.error("RESEND ERROR:", err);
 
     return res.status(500).json({
       success: false,
