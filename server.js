@@ -9,7 +9,7 @@ require("dotenv").config();
 
 const app = express();
 
-app.set("trust proxy", 1); // ← IMPORTANT FIX FOR RENDER
+app.set("trust proxy", 1);
 
 const PORT = process.env.PORT || 5000;
 
@@ -38,35 +38,23 @@ app.post("/send", contactLimiter, async (req, res) => {
   try {
 
     await resend.emails.send({
+
       from: "onboarding@resend.dev",
-      to: "puligundlaguna321@gmail.com",
-      subject: "🚀 New Portfolio Message",
+
+      to: ["puligundlaguna321@gmail.com"],
+
+      subject: "🚀 TEST MAIL FROM PORTFOLIO",
 
       html: `
         <h2>New Contact Form Submission</h2>
 
         <p><b>Name:</b> ${name}</p>
+
         <p><b>Phone:</b> ${phone}</p>
+
         <p><b>Email:</b> ${email}</p>
+
         <p><b>Message:</b> ${message}</p>
-      `
-    });
-
-    await resend.emails.send({
-      from: "onboarding@resend.dev",
-      to: email,
-      subject: "Thanks for contacting Guna 🚀",
-
-      html: `
-        <h2>Hi ${name} 👋</h2>
-
-        <p>Thank you for contacting me.</p>
-
-        <p>I received your message successfully and I'll reply soon.</p>
-
-        <br>
-
-        <strong>— Guna</strong>
       `
     });
 
@@ -85,7 +73,9 @@ app.post("/send", contactLimiter, async (req, res) => {
       success: false,
       message: "Failed to send email."
     });
+
   }
+
 });
 
 app.listen(PORT, () => {
