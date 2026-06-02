@@ -37,7 +37,7 @@ app.post("/send", contactLimiter, async (req, res) => {
 
   try {
 
-    await resend.emails.send({
+    const result = await resend.emails.send({
 
       from: "onboarding@resend.dev",
 
@@ -58,11 +58,13 @@ app.post("/send", contactLimiter, async (req, res) => {
       `
     });
 
+    console.log("RESEND RESULT:", result);
+
     console.log("EMAIL SENT SUCCESSFULLY 🚀");
 
     return res.status(200).json({
       success: true,
-      message: "Email sent successfully!"
+      result
     });
 
   } catch (err) {
@@ -71,7 +73,7 @@ app.post("/send", contactLimiter, async (req, res) => {
 
     return res.status(500).json({
       success: false,
-      message: "Failed to send email."
+      error: err.message
     });
 
   }
