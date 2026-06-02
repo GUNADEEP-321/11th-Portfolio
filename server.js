@@ -29,15 +29,33 @@ const corsOptions = {
   }
 };
 
-// ===== FIXED SMTP CONFIG FOR RENDER =====
+// ===== FIXED SMTP CONFIG =====
 const transporter = nodemailer.createTransport({
+
+  service: "gmail",
+
   host: "smtp.gmail.com",
+
   port: 587,
+
   secure: false,
+
+  requireTLS: true,
+
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
-  }
+  },
+
+  tls: {
+    rejectUnauthorized: false
+  },
+
+  connectionTimeout: 30000,
+
+  greetingTimeout: 30000,
+
+  socketTimeout: 30000
 });
 
 const contactLimiter = rateLimit({
@@ -119,7 +137,8 @@ function buildAutoReplyHtml(name) {
   return `
   <div style="font-family:Arial;padding:20px;background:#f5f7fa;">
     <div style="background:#fff;padding:30px;border-radius:12px;max-width:600px;margin:auto;">
-      <h2>Thanks for contacting me 🚀</h2>
+
+      <h2>Thanks for contacting Guna 🚀</h2>
 
       <p>Hi ${safeName},</p>
 
@@ -128,7 +147,7 @@ function buildAutoReplyHtml(name) {
       </p>
 
       <p>
-        I received your message successfully and will reply soon.
+        I successfully received your message and I’ll respond as soon as possible.
       </p>
 
       <br>
@@ -138,6 +157,7 @@ function buildAutoReplyHtml(name) {
         <strong>Guna</strong><br>
         Front-End Developer
       </p>
+
     </div>
   </div>
   `;
@@ -171,11 +191,13 @@ app.post("/send", contactLimiter, async (req, res) => {
 
   try {
 
+    // Admin Email
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_USER,
       subject: "🚀 New Portfolio Contact Message",
       replyTo: email,
+
       html: `
         <h2>New Contact Form Submission</h2>
 
@@ -189,6 +211,7 @@ app.post("/send", contactLimiter, async (req, res) => {
       `
     });
 
+    // Auto Reply
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: email,
