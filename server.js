@@ -31,12 +31,13 @@ app.get("/", (req, res) => {
 
 app.post("/send", contactLimiter, async (req, res) => {
 
-  console.log("Contact form received 🚀");
+  console.log("CONTACT FORM RECEIVED 🚀");
 
   const { name, phone, email, message } = req.body;
 
   try {
-console.log("API KEY EXISTS:", !!process.env.RESEND_API_KEY);
+
+    console.log("API KEY EXISTS:", !!process.env.RESEND_API_KEY);
 
     const result = await resend.emails.send({
 
@@ -47,7 +48,7 @@ console.log("API KEY EXISTS:", !!process.env.RESEND_API_KEY);
       subject: "🚀 TEST MAIL FROM PORTFOLIO",
 
       html: `
-        <h2>New Contact Form Submission</h2>
+        <h2>NEW CONTACT FORM SUBMISSION</h2>
 
         <p><b>Name:</b> ${name}</p>
 
@@ -59,7 +60,19 @@ console.log("API KEY EXISTS:", !!process.env.RESEND_API_KEY);
       `
     });
 
-    console.log("RESEND RESULT:", result);
+    console.log("FULL RESEND RESULT:");
+    console.log(JSON.stringify(result, null, 2));
+
+    if (result.error) {
+
+      console.log("EMAIL FAILED ❌");
+
+      return res.status(500).json({
+        success: false,
+        error: result.error
+      });
+
+    }
 
     console.log("EMAIL SENT SUCCESSFULLY 🚀");
 
@@ -70,7 +83,7 @@ console.log("API KEY EXISTS:", !!process.env.RESEND_API_KEY);
 
   } catch (err) {
 
-    console.error("RESEND ERROR:", err);
+    console.error("RESEND CATCH ERROR:", err);
 
     return res.status(500).json({
       success: false,
