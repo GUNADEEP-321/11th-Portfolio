@@ -1,0 +1,81 @@
+:root {
+  --color-bg-primary: #f5f5f5;
+  --color-bg-secondary: #efefef;
+  --color-text-primary: #111111;
+  --color-text-secondary: #444444;
+  --color-accent: #2f2f2f;
+
+  --color-white: #ffffff;
+  --color-border: rgba(17, 17, 17, 0.08);
+  --color-border-strong: rgba(17, 17, 17, 0.12);
+
+  --shadow-soft: 0 1px 2px rgba(17, 17, 17, 0.04);
+  --shadow-medium: 0 4px 24px rgba(17, 17, 17, 0.06);
+  --shadow-navbar: 0 8px 32px rgba(17, 17, 17, 0.08);
+  --shadow-navbar-scrolled: 0 12px 40px rgba(17, 17, 17, 0.1);
+
+  --font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --navbar-height: 4.25rem;
+  --navbar-height-scrolled: 3.75rem;
+  --navbar-padding-x: clamp(1.25rem, 4vw, 3rem);
+
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 0.5s cubic-bezier(0.34, 1.2, 0.64, 1);
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-full: 9999px;
+
+  --z-navbar: 1000;
+  --z-navbar-menu: 1001;
+  --z-backdrop: 999;
+
+  /* Glassmorphism — subtle, readable, performance-conscious */
+  --glass-bg: rgba(255, 255, 255, 0.62);
+  --glass-bg-elevated: rgba(255, 255, 255, 0.74);
+  --glass-bg-panel: rgba(255, 255, 255, 0.82);
+  --glass-bg-fallback: rgba(255, 255, 255, 0.94);
+  --glass-border-light: rgba(255, 255, 255, 0.72);
+  --glass-border-outer: rgba(17, 17, 17, 0.07);
+  --glass-blur-sm: blur(12px);
+  --glass-blur: blur(14px);
+  --glass-blur-nav: blur(16px);
+  --glass-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.55) inset,
+    0 4px 24px rgba(17, 17, 17, 0.06),
+    0 1px 2px rgba(17, 17, 17, 0.04);
+  --glass-shadow-hover:
+    0 0 0 1px rgba(255, 255, 255, 0.65) inset,
+    0 10px 36px rgba(17, 17, 17, 0.08),
+    0 2px 8px rgba(17, 17, 17, 0.04);
+  --glass-transition:
+    background-color var(--transition-smooth),
+    box-shadow var(--transition-smooth),
+    border-color var(--transition-smooth),
+    transform var(--transition-smooth);
+
+  /* Premium ambient background (subtle, neutral) */
+  --ambient-blob-1: rgba(255, 255, 255, 0.75);
+  --ambient-blob-2: rgba(239, 239, 239, 0.85);
+  --ambient-blob-3: rgba(17, 17, 17, 0.045);
+  --ambient-line: rgba(17, 17, 17, 0.03);
+
+  /* Interaction polish */
+  --lift-sm: 2px;
+  --lift-md: 6px;
+  --tilt-sm: 1.25deg;
+  --glow-accent: rgba(47, 47, 47, 0.12);
+  --glow-accent-strong: rgba(47, 47, 47, 0.18);
+
+  /* Premium button sheen */
+  --btn-shine: linear-gradient(
+    110deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.55) 35%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 70%
+  );
+}

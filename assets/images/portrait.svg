@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 600" fill="none" role="img" aria-label="Portrait placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="480" y2="600" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#efefef"/>
+      <stop offset="100%" stop-color="#e8e8e8"/>
+    </linearGradient>
+    <linearGradient id="figure" x1="240" y1="120" x2="240" y2="520" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#d4d4d4"/>
+      <stop offset="100%" stop-color="#b8b8b8"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="0.5"/>
+    </filter>
+  </defs>
+  <rect width="480" height="600" fill="url(#bg)"/>
+  <ellipse cx="240" cy="520" rx="140" ry="24" fill="#111" opacity="0.06"/>
+  <ellipse cx="240" cy="200" rx="72" ry="80" fill="url(#figure)"/>
+  <path d="M120 580c20-100 80-140 120-140s100 40 120 140" fill="url(#figure)"/>
+  <rect x="200" y="280" width="80" height="200" rx="40" fill="url(#figure)" opacity="0.9"/>
+</svg>

@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Guna — 11th Student, JEE Aspirant & Front-End Developer">
+  <title>Guna | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/skills.css">
+  <link rel="stylesheet" href="css/journey.css">
+  <link rel="stylesheet" href="css/projects.css">
+  <link rel="stylesheet" href="css/articles.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/footer.css">
+</head>
+<body>
+  <header class="navbar" id="navbar" role="banner">
+    <div class="navbar__inner">
+      <a href="#home" class="navbar__brand scroll-link" aria-label="Guna — Home">
+        <span class="navbar__brand-mark" aria-hidden="true"></span>
+        <span class="navbar__brand-text">Gunadeep</span>
+      </a>
+
+      <nav class="navbar__nav" id="navbar-nav" aria-label="Main navigation">
+        <ul class="navbar__list">
+          <li><a href="#home" class="navbar__link scroll-link" data-section="home">Home</a></li>
+          <li><a href="#about" class="navbar__link scroll-link" data-section="about">About</a></li>
+          <li><a href="#skills" class="navbar__link scroll-link" data-section="skills">Skills</a></li>
+          <li><a href="#journey" class="navbar__link scroll-link" data-section="journey">Journey</a></li>
+          <li><a href="#projects" class="navbar__link scroll-link" data-section="projects">Projects</a></li>
+          <li><a href="#articles" class="navbar__link scroll-link" data-section="articles">Articles</a></li>
+          <li><a href="#contact" class="navbar__link navbar__link--cta scroll-link" data-section="contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button
+        class="navbar__toggle"
+        id="navbar-toggle"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="navbar-nav"
+      >
+        <span class="navbar__toggle-box" aria-hidden="true">
+          <span class="navbar__toggle-line"></span>
+          <span class="navbar__toggle-line"></span>
+          <span class="navbar__toggle-line"></span>
+        </span>
+      </button>
+    </div>
+
+    <div class="navbar__backdrop" id="navbar-backdrop" aria-hidden="true"></div>
+  </header>
+
+  <main id="main-content">
+    <section id="home" class="hero" aria-label="Home">
+      <div class="hero__ambient" aria-hidden="true">
+        <div class="hero__orb hero__orb--1"></div>
+        <div class="hero__orb hero__orb--2"></div>
+        <div class="hero__grid"></div>
+      </div>
+
+      <div class="hero__container">
+        <div class="hero__content">
+          <div class="hero__eyebrow">
+            <span class="hero__eyebrow-dot" aria-hidden="true"></span>
+            <span>Portfolio 2026</span>
+          </div>
+
+          <p class="hero__greeting">
+            Hi, I'm <span class="hero__greeting-name">Guna</span>
+          </p>
+
+          <h1 class="hero__title">
+            <span class="hero__title-line">
+              <span class="hero__title-word">Building Modern</span>
+            </span>
+            <span class="hero__title-line">
+              <span class="hero__title-word">Web Experiences</span>
+            </span>
+          </h1>
+
+          <div class="hero__roles">
+            <span class="hero__role-tag">11th Student</span>
+            <span class="hero__role-divider" aria-hidden="true">•</span>
+            <span class="hero__role-tag">JEE Aspirant</span>
+            <span class="hero__role-divider" aria-hidden="true">•</span>
+            <span class="hero__role-tag">Front-End Developer</span>
+          </div>
+
+          <p class="hero__description">
+            I create responsive, interactive and modern websites with clean design,
+            smooth animations and great user experience.
+          </p>
+
+          <div class="hero__actions">
+            <a href="#projects" class="hero__btn hero__btn--primary scroll-link">
+              <span>Explore Work</span>
+              <svg class="hero__btn-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="#contact" class="hero__btn hero__btn--outline scroll-link">
+              <span>Contact Me</span>
+              <svg class="hero__btn-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M8 3v10M5 6l3-3 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero__visual">
+          <div class="hero__frame-wrapper" id="hero-frame">
+            <div class="hero__frame-glow" aria-hidden="true"></div>
+            <div class="hero__frame-accent" aria-hidden="true"></div>
+            <div class="hero__frame">
+              <div class="hero__frame-inner">
+                <img
+                  class="hero__portrait"
+                  src="assets/images/Portfolio`image.png"
+                  alt="Guna — Front-End Developer portrait"
+                  width="480"
+                  height="600"
+                  loading="eager"
+                  decoding="async"
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <span>Scroll</span>
+        <span class="hero__scroll-line"></span>
+      </div>
+    </section>
+    <section id="about" class="about" aria-label="About">
+      <div class="about__ambient" aria-hidden="true">
+        <span class="about__ambient-line"></span>
+      </div>
+
+      <div class="about__container">
+        <div class="about__layout">
+          <header class="about__header">
+            <div class="about__label">
+              <span class="about__label-line" aria-hidden="true"></span>
+              <span>Who I Am</span>
+            </div>
+            <h2 class="about__title">About Me</h2>
+            <p class="about__subtitle">
+              Student, JEE aspirant and developer — learning every day with purpose.
+            </p>
+          </header>
+
+          <div class="about__content">
+            <p class="about__text about__text--lead">
+              I'm Guna, an 11th student, JEE aspirant and front-end developer.
+            </p>
+            <p class="about__text">
+              I enjoy learning technology, solving problems and building responsive,
+              interactive and modern websites.
+            </p>
+            <p class="about__text">
+              Along with academics, I continuously improve my web development skills
+              through projects, UI exploration and hands-on learning.
+            </p>
+            <p class="about__text">
+              I love creating clean designs, smooth animations and better user experiences.
+            </p>
+            <div class="about__highlight">
+              <span class="about__tag">11th Student</span>
+              <span class="about__tag">JEE Prep</span>
+              <span class="about__tag">Front-End</span>
+            </div>
+          </div>
+
+          <aside class="about__sidebar">
+            <div class="about__profile">
+              <div class="about__profile-top">
+                <div class="about__avatar" aria-hidden="true">G</div>
+                <div>
+                  <p class="about__profile-name">Guna</p>
+                  <p class="about__profile-role">Developer &amp; Student</p>
+                </div>
+              </div>
+              <div class="about__stats">
+                <div class="about__stat">
+                  <span class="about__stat-value">11th</span>
+                  <span class="about__stat-label">Class</span>
+                </div>
+                <div class="about__stat">
+                  <span class="about__stat-value">JEE</span>
+                  <span class="about__stat-label">Focus</span>
+                </div>
+                <div class="about__stat">
+                  <span class="about__stat-value">Web</span>
+                  <span class="about__stat-label">Build</span>
+                </div>
+              </div>
+              <p class="about__profile-note">
+                Balancing serious academic goals with creative development work —
+                both paths shape who I am becoming.
+              </p>
+            </div>
+
+            <div class="about__cards">
+              <article class="about__card">
+                <span class="about__card-shine" aria-hidden="true"></span>
+                <div class="about__card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M8 9l3 3-3 3m5 0h3M4 6h16v12H4V6z" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <h3 class="about__card-title">Web Development</h3>
+                <p class="about__card-desc">
+                  Building responsive sites with HTML, CSS and JavaScript.
+                </p>
+              </article>
+
+              <article class="about__card">
+                <span class="about__card-shine" aria-hidden="true"></span>
+                <div class="about__card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M18.364 18.364l-.707-.707M12 21v-1M5.636 18.364l.707-.707M3 12h1M5.636 5.636l.707.707" stroke-linecap="round"/>
+                    <circle cx="12" cy="12" r="4"/>
+                  </svg>
+                </div>
+                <h3 class="about__card-title">Problem Solving</h3>
+                <p class="about__card-desc">
+                  Thinking clearly through logic, code and exam-style challenges.
+                </p>
+              </article>
+
+              <article class="about__card">
+                <span class="about__card-shine" aria-hidden="true"></span>
+                <div class="about__card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <h3 class="about__card-title">Learning Journey</h3>
+                <p class="about__card-desc">
+                  Growing through daily study, practice and real projects.
+                </p>
+              </article>
+
+              <article class="about__card">
+                <span class="about__card-shine" aria-hidden="true"></span>
+                <div class="about__card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M14 8h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <h3 class="about__card-title">Creative Design</h3>
+                <p class="about__card-desc">
+                  Crafting clean UI, smooth motion and thoughtful layouts.
+                </p>
+              </article>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+    <section id="skills" class="skills" aria-label="Skills">
+      <div class="skills__ambient" aria-hidden="true">
+        <span class="skills__ambient-dot"></span>
+        <span class="skills__ambient-dot"></span>
+        <span class="skills__ambient-dot"></span>
+      </div>
+
+      <div class="skills__container">
+        <header class="skills__header">
+          <div class="skills__label">
+            <span class="skills__label-line" aria-hidden="true"></span>
+            <span>What I Use</span>
+          </div>
+          <h2 class="skills__title">Skills</h2>
+          <p class="skills__subtitle">
+            Technologies, tools and areas I work with.
+          </p>
+        </header>
+
+        <div class="skills__grid">
+          <article class="skills__card">
+            <span class="skills__card-shine" aria-hidden="true"></span>
+            <div class="skills__card-top">
+              <div class="skills__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M7 8l-4 4 4 4M17 8l4 4-4 4M14 4l-4 16" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <span class="skills__index">01</span>
+            </div>
+            <h3 class="skills__name">HTML</h3>
+            <p class="skills__desc">Building structured and semantic web layouts.</p>
+            <div class="skills__card-footer">
+              <span class="skills__dot" aria-hidden="true"></span>
+              <span class="skills__dot" aria-hidden="true"></span>
+              <span class="skills__dot" aria-hidden="true"></span>
+              <span class="skills__footer-text">Core</span>
+            </div>
+          </article>
+
+          <article class="skills__card">
+            <span class="skills__card-shine" aria-hidden="true"></span>
+            <div class="skills__card-top">
+              <div class="skills__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M4 6h16v12H4V6z" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M4 10h16M9 6v12" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <span class="skills__index">02</span>
+            </div>
+            <h3 class="skills__name">CSS</h3>
+            <p class="skills__desc">Creating modern, responsive and visually clean designs.</p>
+            <div class="skills__card-footer">
+              <span class="skills__dot" aria-hidden="true"></span>
+              <span class="skills__dot" aria-hidden="true"></span>
+              <span class="skills__dot" aria-hidden="true"></span>
+              <span class="skills__footer-text">Style</span>
+            </div>
+          </article>
+
+          <article class="skills__card">
+            <span class="skills__card-shine" aria-hidden="true"></span>
+            <div class="skills__card-top">
+              <div class="skills__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/>
+                  <path d="M8 17l2-5 2 3 2-6 2 8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <span class="skills__index">03</span>
+            </div>
+            <h3 class="skills__name">JavaScript</h3>
+            <p class="skills__desc">Adding interactions, dynamic behavior and functionality.</p>
+            <div class="skills__card-footer">
+              <span class="skills__dot" aria-hidden="true"></span>
+              <span class="skills__dot" aria-hidden="true"></span>
+              <span class="skills__dot" aria-hidden="true"></span>
+              <span class="skills__footer-text">Logic</span>
+            </div>
+          </article>
+
+          <article class="skills__card">
+            <span class="skills__card-shine" aria-hidden="true"></span>
+            <div class="skills__card-top">
+              <div class="skills__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M4 5h16M4 12h16M4 19h7" stroke-linecap="round"/>
+                  <rect x="14" y="16" width="6" height="5" rx="1"/>
+                </svg>
+              </div>
+              <span class="skills__index">04</span>
+            </div>
+            <h3 class="skills__name">Bootstrap</h3>
+            <p class="skills__desc">Building responsive UI faster using reusable components.</p>
+            <div class="skills__card-footer">
+              <span class="skills__dot" aria-hidden="true"></span>
+              <span class="skills__dot" aria-hidden="true"></span>
+              <span class="skills__dot" aria-hidden="true"></span>
+              <span class="skills__footer-text">UI Kit</span>
+            </div>
+          </article>
+
+          <article class="skills__card">
+            <span class="skills__card-shine" aria-hidden="true"></span>
+            <div class="skills__card-top">
+              <div class="skills__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="2" y="5" width="20" height="14" rx="2"/>
+                  <path d="M8 21h8M12 19v2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <span class="skills__index">05</span>
+            </div>
+            <h3 class="skills__name">Responsive Design</h3>
+            <p class="skills__desc">Creating layouts that adapt to all screen sizes.</p>
+            <div class="skills__card-footer">
+              <span class="skills__dot" aria-hidden="true"></span>
+              <span class="skills__dot" aria-hidden="true"></span>
+              <span class="skills__dot" aria-hidden="true"></span>
+              <span class="skills__footer-text">Layout</span>
+            </div>
+          </article>
+
+          <article class="skills__card">
+            <span class="skills__card-shine" aria-hidden="true"></span>
+            <div class="skills__card-top">
+              <div class="skills__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/>
+                  <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" stroke="none"/>
+                  <path d="M21 15l-5-5L5 21" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <span class="skills__index">06</span>
+            </div>
+            <h3 class="skills__name">UI Design</h3>
+            <p class="skills__desc">Designing clean, user-friendly and elegant interfaces.</p>
+            <div class="skills__card-footer">
+              <span class="skills__dot" aria-hidden="true"></span>
+              <span class="skills__dot" aria-hidden="true"></span>
+              <span class="skills__dot" aria-hidden="true"></span>
+              <span class="skills__footer-text">Design</span>
+            </div>
+          </article>
+
+          <article class="skills__card">
+            <span class="skills__card-shine" aria-hidden="true"></span>
+            <div class="skills__card-top">
+              <div class="skills__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M5 12h2l1-3 2 6 2-6 1 3h2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="12" cy="12" r="9"/>
+                </svg>
+              </div>
+              <span class="skills__index">07</span>
+            </div>
+            <h3 class="skills__name">Web Animations</h3>
+            <p class="skills__desc">Creating smooth transitions and interactive experiences.</p>
+            <div class="skills__card-footer">
+              <span class="skills__dot" aria-hidden="true"></span>
+              <span class="skills__dot" aria-hidden="true"></span>
+              <span class="skills__dot" aria-hidden="true"></span>
+              <span class="skills__footer-text">Motion</span>
+            </div>
+          </article>
+
+          <article class="skills__card">
+            <span class="skills__card-shine" aria-hidden="true"></span>
+            <div class="skills__card-top">
+              <div class="skills__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M18.364 18.364l-.707-.707M12 21v-1M5.636 18.364l.707-.707M3 12h1M5.636 5.636l.707.707" stroke-linecap="round"/>
+                  <circle cx="12" cy="12" r="4"/>
+                </svg>
+              </div>
+              <span class="skills__index">08</span>
+            </div>
+            <h3 class="skills__name">Problem Solving</h3>
+            <p class="skills__desc">Approaching challenges with logic and creative thinking.</p>
+            <div class="skills__card-footer">
+              <span class="skills__dot" aria-hidden="true"></span>
+              <span class="skills__dot" aria-hidden="true"></span>
+              <span class="skills__dot" aria-hidden="true"></span>
+              <span class="skills__footer-text">Mindset</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section id="journey" class="journey" aria-label="Journey">
+      <div class="journey__ambient" aria-hidden="true">
+        <span class="journey__ambient-ring"></span>
+      </div>
+
+      <div class="journey__container">
+        <header class="journey__header">
+          <div class="journey__label">
+            <span class="journey__label-line" aria-hidden="true"></span>
+            <span>My Path</span>
+          </div>
+          <h2 class="journey__title">My Journey</h2>
+          <p class="journey__subtitle">
+            My learning path, growth and passion for technology.
+          </p>
+        </header>
+
+        <div class="journey__intro">
+          <span class="journey__intro-bar" aria-hidden="true"></span>
+          <p>
+            I enjoy learning technology, solving problems and exploring modern web development.
+          </p>
+          <p>
+            Along with academics and <strong>JEE preparation</strong>, I continuously improve my
+            coding skills by building projects and experimenting with clean UI design and
+            interactive experiences.
+          </p>
+          <p class="journey__belief">
+            I believe in learning by creating, practicing and improving step by step.
+          </p>
+        </div>
+
+        <div class="journey__timeline">
+          <div class="journey__track">
+            <div class="journey__line" aria-hidden="true">
+              <span class="journey__line-progress"></span>
+            </div>
+
+          <article class="journey__item">
+            <div class="journey__card">
+              <span class="journey__card-shine" aria-hidden="true"></span>
+              <div class="journey__card-top">
+                <span class="journey__phase">Beginning</span>
+              </div>
+              <h3 class="journey__card-title">Interest in Technology</h3>
+              <p class="journey__card-desc">
+                I became curious about how websites and apps work. I started exploring
+                technology with a problem-solving mindset — breaking challenges into
+                smaller steps and learning from each one.
+              </p>
+            </div>
+            <div class="journey__marker" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1" stroke-linecap="round"/>
+                <circle cx="12" cy="12" r="4"/>
+              </svg>
+            </div>
+            <div class="journey__spacer" aria-hidden="true"></div>
+          </article>
+
+          <article class="journey__item">
+            <div class="journey__spacer" aria-hidden="true"></div>
+            <div class="journey__marker" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="journey__card">
+              <span class="journey__card-shine" aria-hidden="true"></span>
+              <div class="journey__card-top">
+                <span class="journey__phase">Foundation</span>
+              </div>
+              <h3 class="journey__card-title">Started Learning Web Development</h3>
+              <p class="journey__card-desc">
+                I began with HTML, CSS and JavaScript — learning how to structure pages,
+                style them beautifully and add interactivity. This is where my front-end
+                development journey truly started.
+              </p>
+            </div>
+          </article>
+
+          <article class="journey__item">
+            <div class="journey__card">
+              <span class="journey__card-shine" aria-hidden="true"></span>
+              <div class="journey__card-top">
+                <span class="journey__phase">Practice</span>
+              </div>
+              <h3 class="journey__card-title">Built Personal Projects</h3>
+              <p class="journey__card-desc">
+                I learned by building — personal websites, UI experiments and small tools.
+                Each project taught me something new about layout, responsiveness and writing
+                cleaner code.
+              </p>
+            </div>
+            <div class="journey__marker" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M4 6h16v12H4V6zM4 10h16" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="journey__spacer" aria-hidden="true"></div>
+          </article>
+
+          <article class="journey__item">
+            <div class="journey__spacer" aria-hidden="true"></div>
+            <div class="journey__marker" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="journey__card">
+              <span class="journey__card-shine" aria-hidden="true"></span>
+              <div class="journey__card-top">
+                <span class="journey__phase">Growth</span>
+              </div>
+              <h3 class="journey__card-title">Improved Front-End Skills</h3>
+              <p class="journey__card-desc">
+                I focused on responsive design, UI polish, Bootstrap and smooth web animations.
+                I pay attention to spacing, typography and user experience — making sites that
+                feel modern and professional.
+              </p>
+            </div>
+          </article>
+
+          <article class="journey__item">
+            <div class="journey__card">
+              <span class="journey__card-shine" aria-hidden="true"></span>
+              <div class="journey__card-top">
+                <span class="journey__phase">Balance</span>
+              </div>
+              <h3 class="journey__card-title">Learning + JEE Preparation</h3>
+              <p class="journey__card-desc">
+                As an 11th student and JEE aspirant, I balance serious academics with technical
+                learning. JEE builds discipline and logical thinking — skills that also help me
+                write better code and solve development problems.
+              </p>
+            </div>
+            <div class="journey__marker" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="journey__spacer" aria-hidden="true"></div>
+          </article>
+
+          <article class="journey__item">
+            <div class="journey__spacer" aria-hidden="true"></div>
+            <div class="journey__marker" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="journey__card">
+              <span class="journey__card-shine" aria-hidden="true"></span>
+              <div class="journey__card-top">
+                <span class="journey__phase">Now</span>
+              </div>
+              <h3 class="journey__card-title">Continuous Learning Ahead</h3>
+              <p class="journey__card-desc">
+                I keep exploring new ideas, improving this portfolio and pushing my skills forward.
+                My goal is to grow as a developer while staying focused on my academic dreams —
+                one step at a time.
+              </p>
+            </div>
+          </article>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="projects" class="projects" aria-label="Projects">
+      <div class="projects__ambient" aria-hidden="true">
+        <span class="projects__shape projects__shape--1"></span>
+        <span class="projects__shape projects__shape--2"></span>
+        <span class="projects__shape projects__shape--3"></span>
+      </div>
+
+      <div class="projects__container">
+        <header class="projects__header">
+          <div class="projects__label">
+            <span class="projects__label-line" aria-hidden="true"></span>
+            <span>My Work</span>
+          </div>
+          <h2 class="projects__title">Projects</h2>
+          <p class="projects__subtitle">
+            Projects that reflect my learning, creativity and development journey.
+          </p>
+        </header>
+
+        <div class="projects__toolbar">
+          <div class="projects__stats">
+            <span class="projects__stat-num" data-target="4">0</span>
+            <span class="projects__stat-label">Projects built</span>
+          </div>
+          <div class="projects__filters" role="group" aria-label="Filter projects">
+            <button type="button" class="projects__filter projects__filter--active" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="projects__filter" data-filter="website" aria-pressed="false">Websites</button>
+            <button type="button" class="projects__filter" data-filter="ui" aria-pressed="false">UI &amp; Layout</button>
+          </div>
+        </div>
+
+        <div class="projects__grid">
+          <article class="projects__card" data-category="website">
+            <span class="projects__card-spotlight" aria-hidden="true"></span>
+            <div class="projects__preview">
+              <img src="assets/images/projects/techblog.svg" alt="TechBlog Website preview" width="640" height="400" loading="lazy">
+              <span class="projects__preview-overlay" aria-hidden="true"></span>
+              <span class="projects__preview-tag">Blog</span>
+            </div>
+            <div class="projects__body">
+              <h3 class="projects__card-title">TechBlog Website</h3>
+              <p class="projects__card-desc">
+                A responsive blog-style website with modern UI, clean layouts and interactive design.
+              </p>
+              <div class="projects__tech">
+                <span class="projects__tech-tag">HTML</span>
+                <span class="projects__tech-tag">CSS</span>
+                <span class="projects__tech-tag">JavaScript</span>
+                <span class="projects__tech-tag">Responsive Design</span>
+              </div>
+              <div class="projects__actions">
+                <a href="#" class="projects__btn projects__btn--primary">
+                  Live Demo
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a href="#" class="projects__btn projects__btn--outline">
+                  View Code
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 4H3v9h9v-3M9 3h4v4M7 9l6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="projects__card" data-category="ui">
+            <span class="projects__card-spotlight" aria-hidden="true"></span>
+            <div class="projects__preview">
+              <img src="assets/images/projects/navbar.svg" alt="Responsive Navbar preview" width="640" height="400" loading="lazy">
+              <span class="projects__preview-overlay" aria-hidden="true"></span>
+              <span class="projects__preview-tag">Component</span>
+            </div>
+            <div class="projects__body">
+              <h3 class="projects__card-title">Responsive Navbar</h3>
+              <p class="projects__card-desc">
+                A modern responsive navigation system with animations, mobile menu and smooth interactions.
+              </p>
+              <div class="projects__tech">
+                <span class="projects__tech-tag">HTML</span>
+                <span class="projects__tech-tag">CSS</span>
+                <span class="projects__tech-tag">JavaScript</span>
+              </div>
+              <div class="projects__actions">
+                <a href="#" class="projects__btn projects__btn--primary">
+                  Live Demo
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a href="#" class="projects__btn projects__btn--outline">
+                  View Code
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 4H3v9h9v-3M9 3h4v4M7 9l6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="projects__card" data-category="website">
+            <span class="projects__card-spotlight" aria-hidden="true"></span>
+            <div class="projects__preview">
+              <img src="assets/images/projects/portfolio.svg" alt="Portfolio Website preview" width="640" height="400" loading="lazy">
+              <span class="projects__preview-overlay" aria-hidden="true"></span>
+              <span class="projects__preview-tag">Portfolio</span>
+            </div>
+            <div class="projects__body">
+              <h3 class="projects__card-title">Portfolio Website</h3>
+              <p class="projects__card-desc">
+                A clean portfolio website with premium layout, smooth animations and responsive design.
+              </p>
+              <div class="projects__tech">
+                <span class="projects__tech-tag">HTML</span>
+                <span class="projects__tech-tag">CSS</span>
+                <span class="projects__tech-tag">JavaScript</span>
+                <span class="projects__tech-tag">Bootstrap</span>
+              </div>
+              <div class="projects__actions">
+                <a href="#" class="projects__btn projects__btn--primary">
+                  Live Demo
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a href="#" class="projects__btn projects__btn--outline">
+                  View Code
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 4H3v9h9v-3M9 3h4v4M7 9l6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="projects__card" data-category="ui">
+            <span class="projects__card-spotlight" aria-hidden="true"></span>
+            <div class="projects__preview">
+              <img src="assets/images/projects/vidtube.svg" alt="Vidtube Clone preview" width="640" height="400" loading="lazy">
+              <span class="projects__preview-overlay" aria-hidden="true"></span>
+              <span class="projects__preview-tag">UI Clone</span>
+            </div>
+            <div class="projects__body">
+              <h3 class="projects__card-title">Vidtube Clone</h3>
+              <p class="projects__card-desc">
+                A video platform inspired interface focused on layout, responsiveness and interactive UI.
+              </p>
+              <div class="projects__tech">
+                <span class="projects__tech-tag">HTML</span>
+                <span class="projects__tech-tag">CSS</span>
+                <span class="projects__tech-tag">JavaScript</span>
+                <span class="projects__tech-tag">Responsive Design</span>
+              </div>
+              <div class="projects__actions">
+                <a href="#" class="projects__btn projects__btn--primary">
+                  Live Demo
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a href="#" class="projects__btn projects__btn--outline">
+                  View Code
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 4H3v9h9v-3M9 3h4v4M7 9l6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <p class="projects__empty" role="status">No projects in this category yet.</p>
+        </div>
+      </div>
+    </section>
+    <section id="articles" class="articles" aria-label="Articles">
+      <div class="articles__container">
+        <header class="articles__header">
+          <div class="articles__label">
+            <span class="articles__label-line" aria-hidden="true"></span>
+            <span>Blog</span>
+          </div>
+          <h2 class="articles__title">Articles</h2>
+          <p class="articles__subtitle">
+            Thoughts, learning experiences and useful web development insights.
+          </p>
+        </header>
+
+        <div class="articles__toolbar">
+          <div class="articles__toolbar-left">
+            <div class="articles__search-wrap">
+              <svg class="articles__search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/>
+              </svg>
+              <input type="search" class="articles__search" placeholder="Search articles..." aria-label="Search articles" autocomplete="off">
+            </div>
+            <div class="articles__stats">
+              <span class="articles__stat-num">0</span>
+              <span class="articles__stat-label">articles</span>
+            </div>
+          </div>
+          <div class="articles__filters" role="group" aria-label="Filter articles by category">
+            <button type="button" class="articles__filter articles__filter--active" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="articles__filter" data-filter="learning" aria-pressed="false">Learning</button>
+            <button type="button" class="articles__filter" data-filter="html" aria-pressed="false">HTML</button>
+            <button type="button" class="articles__filter" data-filter="css" aria-pressed="false">CSS</button>
+            <button type="button" class="articles__filter" data-filter="javascript" aria-pressed="false">JavaScript</button>
+            <button type="button" class="articles__filter" data-filter="design" aria-pressed="false">Design</button>
+          </div>
+        </div>
+
+        <div class="articles__grid">
+          <article class="articles__card articles__card--featured" data-category="learning" data-search="how i started web development learning journey beginner html css javascript">
+            <span class="articles__featured-badge">Featured</span>
+            <div class="articles__card-visual">
+              <span class="articles__card-pattern" aria-hidden="true"></span>
+              <span class="articles__card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+            <div class="articles__card-body">
+              <div class="articles__card-meta">
+                <span class="articles__category">Learning</span>
+                <span class="articles__time">
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor"/><path d="M8 4.5V8l2.5 1.5" stroke="currentColor" stroke-linecap="round"/></svg>
+                  6 min read
+                </span>
+              </div>
+              <h3 class="articles__card-title">How I Started Web Development</h3>
+              <p class="articles__card-desc">
+                My journey began with curiosity — I wanted to know how websites work. I started with simple HTML pages, then learned CSS to style them and JavaScript to add interactivity. Small daily practice helped me build confidence step by step.
+              </p>
+              <a href="#" class="articles__read">
+                Read More
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="articles__card" data-category="html" data-search="html tips beginners semantic tags structure">
+            <div class="articles__card-visual">
+              <span class="articles__card-pattern" aria-hidden="true"></span>
+              <span class="articles__card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 8l-4 4 4 4M17 8l4 4-4 4M14 4l-4 16" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+            <div class="articles__card-body">
+              <div class="articles__card-meta">
+                <span class="articles__category">HTML</span>
+                <span class="articles__time">
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor"/><path d="M8 4.5V8l2.5 1.5" stroke="currentColor" stroke-linecap="round"/></svg>
+                  4 min read
+                </span>
+              </div>
+              <h3 class="articles__card-title">HTML Tips for Beginners</h3>
+              <p class="articles__card-desc">
+                Use semantic tags like header, main and article to structure pages clearly. Always add alt text to images and keep your HTML clean — good structure makes CSS and JavaScript much easier later.
+              </p>
+              <a href="#" class="articles__read">
+                Read More
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="articles__card" data-category="css" data-search="css tricks flexbox grid spacing variables">
+            <div class="articles__card-visual">
+              <span class="articles__card-pattern" aria-hidden="true"></span>
+              <span class="articles__card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16v12H4V6zM4 10h16M9 6v12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+            <div class="articles__card-body">
+              <div class="articles__card-meta">
+                <span class="articles__category">CSS</span>
+                <span class="articles__time">
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor"/><path d="M8 4.5V8l2.5 1.5" stroke="currentColor" stroke-linecap="round"/></svg>
+                  5 min read
+                </span>
+              </div>
+              <h3 class="articles__card-title">CSS Tricks I Use</h3>
+              <p class="articles__card-desc">
+                Flexbox and Grid solve most layout problems. I use consistent spacing, CSS variables for colors and smooth transitions for hover effects. Small details like border-radius and shadows make designs feel premium.
+              </p>
+              <a href="#" class="articles__read">
+                Read More
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="articles__card" data-category="javascript" data-search="javascript learning journey functions dom events">
+            <div class="articles__card-visual">
+              <span class="articles__card-pattern" aria-hidden="true"></span>
+              <span class="articles__card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 17l2-5 2 3 2-6 2 8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+            <div class="articles__card-body">
+              <div class="articles__card-meta">
+                <span class="articles__category">JavaScript</span>
+                <span class="articles__time">
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor"/><path d="M8 4.5V8l2.5 1.5" stroke="currentColor" stroke-linecap="round"/></svg>
+                  7 min read
+                </span>
+              </div>
+              <h3 class="articles__card-title">My JavaScript Learning Journey</h3>
+              <p class="articles__card-desc">
+                JavaScript felt challenging at first, but practicing with small projects helped a lot. I learned variables, functions, DOM manipulation and events. Building interactive features is now one of my favourite parts of web development.
+              </p>
+              <a href="#" class="articles__read">
+                Read More
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="articles__card" data-category="design" data-search="responsive design basics mobile flexbox media queries">
+            <div class="articles__card-visual">
+              <span class="articles__card-pattern" aria-hidden="true"></span>
+              <span class="articles__card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M8 21h8M12 19v2" stroke-linecap="round"/></svg>
+              </span>
+            </div>
+            <div class="articles__card-body">
+              <div class="articles__card-meta">
+                <span class="articles__category">Design</span>
+                <span class="articles__time">
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor"/><path d="M8 4.5V8l2.5 1.5" stroke="currentColor" stroke-linecap="round"/></svg>
+                  5 min read
+                </span>
+              </div>
+              <h3 class="articles__card-title">Responsive Design Basics</h3>
+              <p class="articles__card-desc">
+                A good website should work on phones, tablets and desktops. I use flexible layouts, relative units, and media queries to adapt designs. Testing on different screen sizes is an important habit every developer should build.
+              </p>
+              <a href="#" class="articles__read">
+                Read More
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="articles__card" data-category="design" data-search="clean ui design principles spacing typography minimal">
+            <div class="articles__card-visual">
+              <span class="articles__card-pattern" aria-hidden="true"></span>
+              <span class="articles__card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" stroke="none"/><path d="M21 15l-5-5L5 21" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+            <div class="articles__card-body">
+              <div class="articles__card-meta">
+                <span class="articles__category">UI</span>
+                <span class="articles__time">
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor"/><path d="M8 4.5V8l2.5 1.5" stroke="currentColor" stroke-linecap="round"/></svg>
+                  4 min read
+                </span>
+              </div>
+              <h3 class="articles__card-title">Clean UI Design Principles</h3>
+              <p class="articles__card-desc">
+                Less is often more. I focus on clear typography, enough white space and a limited color palette. Consistent spacing and simple layouts help users understand content quickly without feeling overwhelmed.
+              </p>
+              <a href="#" class="articles__read">
+                Read More
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <p class="articles__empty" role="status">No articles match your search. Try a different keyword or category.</p>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="contact" aria-label="Contact">
+      <div class="contact__ambient" aria-hidden="true">
+        <span class="contact__ambient-glow"></span>
+      </div>
+
+      <div class="contact__container">
+        <div class="contact__grid">
+          <div class="contact__info">
+            <div class="contact__eyebrow">
+              <span class="contact__eyebrow-line" aria-hidden="true"></span>
+              <span>Get in Touch</span>
+            </div>
+            <h2 class="contact__title">Contact</h2>
+            <p class="contact__subtitle">
+              Let's connect, collaborate or talk about technology, learning and creative ideas.
+            </p>
+            <p class="contact__intro">
+              Whether you want to discuss a project, ask a question or share an idea — I would love to hear from you. Send a message and I will reply as soon as I can.
+            </p>
+            <div class="contact__badge">
+              <span class="contact__badge-dot" aria-hidden="true"></span>
+              <span>Available for projects &amp; collaboration</span>
+            </div>
+
+            <div class="contact__cards">
+              <a href="mailto:puligundlaguna321@gmail.com" class="contact__card">
+                <span class="contact__card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span>
+                  <span class="contact__card-label">Email</span>
+                  <span class="contact__card-value">puligundlaguna321@gmail.com</span>
+                </span>
+              </a>
+
+              <a href="https://github.com/GUNADEEP-321" class="contact__card" target="_blank" rel="noopener noreferrer">
+                <span class="contact__card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77 5.44 5.44 0 003 9.45c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span>
+                  <span class="contact__card-label">GitHub</span>
+                  <span class="contact__card-value">GUNADEEP-321</span>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact__form-wrap">
+            <form class="contact__form" novalidate>
+              <h3 class="contact__form-title">Send a Message</h3>
+              <p class="contact__form-desc">Fill in the form below and I will respond as soon as possible.</p>
+
+              <div class="contact__fields">
+                <div class="contact__row">
+                  <div class="contact__field">
+                    <input type="text" id="contact-name" name="name" class="contact__input" placeholder="Enter your name" autocomplete="name" required>
+                    <label class="contact__float-label" for="contact-name">Name</label>
+                    <span class="contact__error" role="alert"></span>
+                  </div>
+                  <div class="contact__field">
+                    <input type="tel" id="contact-phone" name="phone" class="contact__input" placeholder="Enter your phone number" autocomplete="tel" required>
+                    <label class="contact__float-label" for="contact-phone">Phone</label>
+                    <span class="contact__error" role="alert"></span>
+                  </div>
+                </div>
+
+                <div class="contact__field">
+                  <input type="email" id="contact-email" name="email" class="contact__input" placeholder="Enter your email address" autocomplete="email" required>
+                  <label class="contact__float-label" for="contact-email">Email</label>
+                  <span class="contact__error" role="alert"></span>
+                </div>
+
+                <div class="contact__field contact__field--textarea">
+                  <textarea id="contact-message" name="message" class="contact__textarea" placeholder="Write your message here..." rows="5" required></textarea>
+                  <label class="contact__float-label" for="contact-message">Message</label>
+                  <span class="contact__error" role="alert"></span>
+                </div>
+              </div>
+
+              <button type="submit" class="contact__submit">
+                <span class="contact__submit-text">Send Message</span>
+                <span class="contact__submit-loader" aria-hidden="true"></span>
+                <svg class="contact__submit-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+
+              <p class="contact__feedback" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="footer" role="contentinfo">
+    <div class="footer__container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="#home" class="footer__logo scroll-link" aria-label="Guna — Home">
+            <span class="footer__logo-mark" aria-hidden="true"></span>
+            <span class="footer__logo-text">Guna</span>
+          </a>
+          <p class="footer__desc">
+            11th Student, JEE Aspirant and Front-End Developer.
+          </p>
+          <p class="footer__desc">
+            Building modern, responsive and interactive web experiences.
+          </p>
+        </div>
+
+        <nav class="footer__column" aria-label="Footer navigation">
+          <h3 class="footer__heading">Quick Links</h3>
+          <ul class="footer__links">
+            <li><a href="#home" class="footer__link scroll-link">Home</a></li>
+            <li><a href="#about" class="footer__link scroll-link">About</a></li>
+            <li><a href="#skills" class="footer__link scroll-link">Skills</a></li>
+            <li><a href="#journey" class="footer__link scroll-link">Journey</a></li>
+            <li><a href="#projects" class="footer__link scroll-link">Projects</a></li>
+            <li><a href="#articles" class="footer__link scroll-link">Articles</a></li>
+            <li><a href="#contact" class="footer__link scroll-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer__column">
+          <h3 class="footer__heading">Connect</h3>
+          <div class="footer__connect">
+            <div class="footer__connect-item">
+              <span class="footer__connect-label">Email</span>
+              <a href="mailto:puligundlaguna321@gmail.com" class="footer__connect-value">puligundlaguna321@gmail.com</a>
+            </div>
+            <div class="footer__connect-item">
+              <span class="footer__connect-label">GitHub</span>
+              <a href="https://github.com/GUNADEEP-321" class="footer__connect-value" target="_blank" rel="noopener noreferrer">github.com/GUNADEEP-321</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">© 2026 Guna. Crafted with passion, learning and clean code.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button type="button" class="footer__top" id="footer-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <script src="js/scroll.js"></script>
+  <script src="js/reveal.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/hero.js"></script>
+  <script src="js/about.js"></script>
+  <script src="js/skills.js"></script>
+  <script src="js/journey.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="js/articles.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/footer.js"></script>
+</body>
+</html>
