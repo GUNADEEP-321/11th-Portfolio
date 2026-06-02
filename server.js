@@ -11,12 +11,17 @@ const PORT = process.env.PORT || 5000;
 
 const allowedOrigins = (process.env.CORS_ORIGIN || "")
   .split(",")
-  .map((origin) => origin.trim())
+  .map(origin => origin.trim())
   .filter(Boolean);
 
 const corsOptions = {
   origin(origin, callback) {
-    if (!origin || allowedOrigins.length === 0 || allowedOrigins.includes(origin)) {
+
+    if (
+      !origin ||
+      allowedOrigins.length === 0 ||
+      allowedOrigins.includes(origin)
+    ) {
       return callback(null, true);
     }
 
@@ -24,8 +29,11 @@ const corsOptions = {
   }
 };
 
+// ===== FIXED SMTP CONFIG FOR RENDER =====
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
@@ -58,11 +66,28 @@ function escapeHtml(value) {
 }
 
 function validateContactForm(data) {
+
   const formData = data || {};
-  const name = typeof formData.name === "string" ? formData.name.trim() : "";
-  const phone = typeof formData.phone === "string" ? formData.phone.trim() : "";
-  const email = typeof formData.email === "string" ? formData.email.trim() : "";
-  const message = typeof formData.message === "string" ? formData.message.trim() : "";
+
+  const name =
+    typeof formData.name === "string"
+      ? formData.name.trim()
+      : "";
+
+  const phone =
+    typeof formData.phone === "string"
+      ? formData.phone.trim()
+      : "";
+
+  const email =
+    typeof formData.email === "string"
+      ? formData.email.trim()
+      : "";
+
+  const message =
+    typeof formData.message === "string"
+      ? formData.message.trim()
+      : "";
 
   const phoneRegex = /^[+\d]?(?:[\d\s().-]){7,20}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -88,40 +113,33 @@ function validateContactForm(data) {
 }
 
 function buildAutoReplyHtml(name) {
+
   const safeName = escapeHtml(name);
 
   return `
-    <div style="margin:0;padding:0;background:#f4f7fb;font-family:Arial,Helvetica,sans-serif;color:#172033;">
-      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;background:#f4f7fb;">
-        <tr>
-          <td align="center" style="padding:32px 16px;">
-            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;max-width:560px;background:#ffffff;border-radius:14px;overflow:hidden;border:1px solid #e6ebf2;">
-              <tr>
-                <td style="padding:28px 28px 20px;border-bottom:1px solid #edf1f6;">
-                  <h1 style="margin:0;font-size:22px;line-height:1.35;color:#111827;font-weight:700;">Thanks for contacting me</h1>
-                </td>
-              </tr>
-              <tr>
-                <td style="padding:28px;">
-                  <p style="margin:0 0 16px;font-size:16px;line-height:1.6;">Hi ${safeName},</p>
-                  <p style="margin:0 0 16px;font-size:16px;line-height:1.6;">
-                    Thank you for contacting me through my portfolio website.
-                  </p>
-                  <p style="margin:0 0 16px;font-size:16px;line-height:1.6;">
-                    I have received your message successfully and will respond as soon as possible.
-                  </p>
-                  <p style="margin:24px 0 0;font-size:16px;line-height:1.6;">
-                    Regards,<br>
-                    <strong>Guna</strong><br>
-                    Front-End Developer
-                  </p>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
+  <div style="font-family:Arial;padding:20px;background:#f5f7fa;">
+    <div style="background:#fff;padding:30px;border-radius:12px;max-width:600px;margin:auto;">
+      <h2>Thanks for contacting me 🚀</h2>
+
+      <p>Hi ${safeName},</p>
+
+      <p>
+        Thank you for contacting me through my portfolio website.
+      </p>
+
+      <p>
+        I received your message successfully and will reply soon.
+      </p>
+
+      <br>
+
+      <p>
+        Regards,<br>
+        <strong>Guna</strong><br>
+        Front-End Developer
+      </p>
     </div>
+  </div>
   `;
 }
 
@@ -160,9 +178,13 @@ app.post("/send", contactLimiter, async (req, res) => {
       replyTo: email,
       html: `
         <h2>New Contact Form Submission</h2>
+
         <p><b>Name:</b> ${escapeHtml(name)}</p>
+
         <p><b>Phone:</b> ${escapeHtml(phone)}</p>
+
         <p><b>Email:</b> ${escapeHtml(email)}</p>
+
         <p><b>Message:</b> ${escapeHtml(message)}</p>
       `
     });
@@ -171,16 +193,7 @@ app.post("/send", contactLimiter, async (req, res) => {
       from: process.env.EMAIL_USER,
       to: email,
       subject: "Thanks for contacting Guna 🚀",
-      html: buildAutoReplyHtml(name),
-      text: `Hi ${name},
-
-Thank you for contacting me through my portfolio website.
-
-I have received your message successfully and will respond as soon as possible.
-
-Regards,
-Guna
-Front-End Developer`
+      html: buildAutoReplyHtml(name)
     });
 
     console.log("EMAILS SENT SUCCESSFULLY 🚀");
@@ -201,29 +214,6 @@ Front-End Developer`
   }
 });
 
-app.use((error, req, res, next) => {
-  if (error.type === "entity.too.large") {
-    return res.status(413).json({
-      success: false,
-      message: "Request payload too large."
-    });
-  }
-
-  if (error instanceof SyntaxError && "body" in error) {
-    return res.status(400).json({
-      success: false,
-      message: "Invalid JSON payload."
-    });
-  }
-
-  console.error("SERVER ERROR:", error);
-
-  return res.status(500).json({
-    success: false,
-    message: "Internal server error."
-  });
-});
-
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
