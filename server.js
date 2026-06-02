@@ -36,6 +36,7 @@ app.post("/send", contactLimiter, async (req, res) => {
   const { name, phone, email, message } = req.body;
 
   try {
+console.log("API KEY EXISTS:", !!process.env.RESEND_API_KEY);
 
     const result = await resend.emails.send({
 
