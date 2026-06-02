@@ -9,37 +9,36 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+app.set("trust proxy", 1);
+
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname));
 
-/* ===== SMTP FIXED CONFIG ===== */
+/* EMAIL CONFIG */
 
 const transporter = nodemailer.createTransport({
 
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
 
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
-  },
+  }
 
-  tls: {
-    rejectUnauthorized: false
-  },
-
-  family: 4
 });
 
-/* ===== RATE LIMITER ===== */
+/* RATE LIMIT */
 
 const contactLimiter = rateLimit({
   windowMs: 60 * 1000,
   limit: 5
 });
 
-/* ===== ROUTES ===== */
+/* ROUTES */
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
@@ -47,13 +46,9 @@ app.get("/", (req, res) => {
 
 app.post("/send", contactLimiter, async (req, res) => {
 
-  console.log("Contact form submission received.");
-
   const { name, phone, email, message } = req.body;
 
   try {
-
-    /* Admin Mail */
 
     await transporter.sendMail({
 
@@ -61,24 +56,17 @@ app.post("/send", contactLimiter, async (req, res) => {
 
       to: process.env.EMAIL_USER,
 
-      subject: "🚀 New Portfolio Contact Message",
+      subject: "New Portfolio Contact Message",
 
       replyTo: email,
 
-      html: `
-        <h2>New Contact Form Submission</h2>
-
-        <p><b>Name:</b> ${name}</p>
-
-        <p><b>Phone:</b> ${phone}</p>
-
-        <p><b>Email:</b> ${email}</p>
-
-        <p><b>Message:</b> ${message}</p>
+      text: `
+Name: ${name}
+Phone: ${phone}
+Email: ${email}
+Message: ${message}
       `
     });
-
-    /* Auto Reply */
 
     await transporter.sendMail({
 
@@ -88,30 +76,16 @@ app.post("/send", contactLimiter, async (req, res) => {
 
       subject: "Thanks for contacting Guna 🚀",
 
-      html: `
-        <div style="font-family:Arial;padding:20px">
+      text: `
+Hi ${name},
 
-          <h2>Thanks for contacting Guna 🚀</h2>
+Your message was received successfully.
 
-          <p>Hi ${name},</p>
+I will reply soon.
 
-          <p>
-            Your message was received successfully.
-          </p>
-
-          <p>
-            I’ll reply soon.
-          </p>
-
-          <br>
-
-          <strong>— Guna</strong>
-
-        </div>
+— Guna
       `
     });
-
-    console.log("EMAILS SENT SUCCESSFULLY 🚀");
 
     return res.status(200).json({
       success: true,
@@ -120,13 +94,15 @@ app.post("/send", contactLimiter, async (req, res) => {
 
   } catch (error) {
 
-    console.error("EMAIL ERROR:", error);
+    console.error(error);
 
     return res.status(500).json({
       success: false,
       message: "Failed to send email."
     });
+
   }
+
 });
 
 app.listen(PORT, () => {
