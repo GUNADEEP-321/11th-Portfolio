@@ -1,46 +1,26 @@
 const path = require("path");
 const express = require("express");
-const nodemailer = require("nodemailer");
 const cors = require("cors");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
+const { Resend } = require("resend");
+
 require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.set("trust proxy", 1);
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname));
 
-/* EMAIL CONFIG */
-
-const transporter = nodemailer.createTransport({
-
-  host: "smtp.gmail.com",
-
-  port: 465,
-
-  secure: true,
-
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
-
-});
-
-/* RATE LIMIT */
-
 const contactLimiter = rateLimit({
   windowMs: 60 * 1000,
   limit: 5
 });
-
-/* ROUTES */
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
@@ -48,44 +28,46 @@ app.get("/", (req, res) => {
 
 app.post("/send", contactLimiter, async (req, res) => {
 
+  console.log("Contact form received 🚀");
+
   const { name, phone, email, message } = req.body;
 
   try {
 
-    await transporter.sendMail({
+    // Mail to YOU
+    await resend.emails.send({
+      from: "onboarding@resend.dev",
+      to: "puligundlaguna321@gmail.com",
+      subject: "🚀 New Portfolio Message",
+      html: `
+        <h2>New Contact Form Submission</h2>
 
-      from: process.env.EMAIL_USER,
-
-      to: process.env.EMAIL_USER,
-
-      subject: "New Portfolio Contact Message",
-
-      replyTo: email,
-
-      text: `
-Name: ${name}
-Phone: ${phone}
-Email: ${email}
-Message: ${message}
+        <p><b>Name:</b> ${name}</p>
+        <p><b>Phone:</b> ${phone}</p>
+        <p><b>Email:</b> ${email}</p>
+        <p><b>Message:</b> ${message}</p>
       `
     });
 
-    await transporter.sendMail({
-
-      from: process.env.EMAIL_USER,
-
+    // Auto Reply
+    await resend.emails.send({
+      from: "onboarding@resend.dev",
       to: email,
-
       subject: "Thanks for contacting Guna 🚀",
+      html: `
+        <h2>Hi ${name} 👋</h2>
 
-      text: `
-Hi ${name},
+        <p>
+          Thank you for contacting me through my portfolio website.
+        </p>
 
-Your message was received successfully.
+        <p>
+          I received your message successfully and I'll reply soon.
+        </p>
 
-I will reply soon.
+        <br>
 
-— Guna
+        <strong>— Guna</strong>
       `
     });
 
@@ -94,17 +76,15 @@ I will reply soon.
       message: "Email sent successfully!"
     });
 
-  } catch (error) {
+  } catch (err) {
 
-    console.error(error);
+    console.error(err);
 
     return res.status(500).json({
       success: false,
       message: "Failed to send email."
     });
-
   }
-
 });
 
 app.listen(PORT, () => {
