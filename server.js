@@ -21,11 +21,33 @@ const contactLimiter = rateLimit({
   legacyHeaders: false,
   message: {
     success: false,
-    message: "Too many requests. Please try again later."
-  }
+    message: "Too many requests. Please try again later.",
+  },
 });
 
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+
+        scriptSrc: [
+          "'self'",
+          "'unsafe-inline'",
+          "https://www.googletagmanager.com",
+        ],
+
+        connectSrc: [
+          "'self'",
+          "https://www.google-analytics.com",
+          "https://region1.google-analytics.com",
+        ],
+
+        imgSrc: ["'self'", "data:", "https:"],
+      },
+    },
+  }),
+);
 app.use(cors());
 app.use(express.json({ limit: "20kb" }));
 app.use(express.static(__dirname));
@@ -90,7 +112,7 @@ app.get("/", (req, res) => {
 app.get("/health", (req, res) => {
   return res.status(200).json({
     success: true,
-    status: "OK"
+    status: "OK",
   });
 });
 
@@ -105,7 +127,7 @@ app.post("/send", contactLimiter, async (req, res) => {
       to: ["puligundlagunadeep321@gmail.com"],
       subject: "🚀 Portfolio Contact Message",
       replyTo: email,
-      html: buildAdminEmailHtml({ name, phone, email, message })
+      html: buildAdminEmailHtml({ name, phone, email, message }),
     });
 
     console.log("ADMIN EMAIL SENT ✅");
@@ -114,21 +136,21 @@ app.post("/send", contactLimiter, async (req, res) => {
       from: "onboarding@resend.dev",
       to: email,
       subject: "Thanks for contacting Guna 🚀",
-      html: buildAutoReplyHtml(name)
+      html: buildAutoReplyHtml(name),
     });
 
     console.log("AUTO REPLY SENT ✅");
 
     return res.status(200).json({
       success: true,
-      message: "Emails sent successfully!"
+      message: "Emails sent successfully!",
     });
   } catch (err) {
     console.error("EMAIL ERROR:", err);
 
     return res.status(500).json({
       success: false,
-      message: "Failed to send emails."
+      message: "Failed to send emails.",
     });
   }
 });
@@ -137,14 +159,14 @@ app.use((error, req, res, next) => {
   if (error.type === "entity.too.large") {
     return res.status(413).json({
       success: false,
-      message: "Request payload too large."
+      message: "Request payload too large.",
     });
   }
 
   if (error instanceof SyntaxError && "body" in error) {
     return res.status(400).json({
       success: false,
-      message: "Invalid JSON payload."
+      message: "Invalid JSON payload.",
     });
   }
 
