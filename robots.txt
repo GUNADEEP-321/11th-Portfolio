@@ -1,0 +1,15 @@
+# robots.txt — Gunadeep Portfolio
+# https://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+Allow: /
+
+# Block access to server-side files
+Disallow: /node_modules/
+Disallow: /server.js
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /.npm-cache/
+
+# Sitemap location — replace with your live domain
+Sitemap: https://yourdomain.com/sitemap.xml

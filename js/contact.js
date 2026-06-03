@@ -1,88 +1,92 @@
 (function () {
-
   "use strict";
 
   const form = document.querySelector(".contact__form");
   const submitBtn = document.querySelector(".contact__submit");
-  const feedback = document.querySelector(".contact__feedback");
+  const submitText = submitBtn?.querySelector(".contact__submit-text");
 
   if (!form) return;
 
-  function showFeedback(message, type) {
-    if (!feedback) return;
+  let isSubmitting = false;
+  const ORIGINAL_TEXT = "Send Message";
 
-    feedback.textContent = message;
-    feedback.className =
-      `contact__feedback contact__feedback--${type} is-visible`;
+  /* ── Button state machine ── */
+  function setButtonState(state) {
+    if (!submitBtn) return;
+
+    submitBtn.classList.remove("is-loading", "is-sent");
+
+    switch (state) {
+      case "loading":
+        submitBtn.disabled = true;
+        submitBtn.setAttribute("aria-busy", "true");
+        submitBtn.classList.add("is-loading");
+        if (submitText) submitText.textContent = "Sending...";
+        break;
+
+      case "sent":
+        submitBtn.disabled = true;
+        submitBtn.removeAttribute("aria-busy");
+        submitBtn.classList.add("is-sent");
+        if (submitText) submitText.textContent = "Message Sent \u2713";
+        break;
+
+      case "error":
+      case "idle":
+      default:
+        submitBtn.disabled = false;
+        submitBtn.removeAttribute("aria-busy");
+        if (submitText) submitText.textContent = ORIGINAL_TEXT;
+        break;
+    }
   }
 
-  function hideFeedback() {
-    if (!feedback) return;
-
-    feedback.classList.remove("is-visible");
-  }
-
+  /* ── Submit handler ── */
   form.addEventListener("submit", async (e) => {
-
     e.preventDefault();
 
-    console.log("FORM SUBMITTED 🚀");
+    if (isSubmitting) return; // guard against duplicate submissions
+    isSubmitting = true;
 
-    hideFeedback();
-
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.classList.add("is-loading");
-    }
+    setButtonState("loading");
 
     const data = {
-      name: form.name.value,
-      phone: form.phone.value,
-      email: form.email.value,
-      message: form.message.value
+      name: form.name.value.trim(),
+      phone: form.phone.value.trim(),
+      email: form.email.value.trim(),
+      message: form.message.value.trim(),
     };
 
     try {
-      console.log("SENDING REQUEST TO SERVER 🚀");
-      const response = await fetch(
-        "/send",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(data)
-        }
-      );
+      const response = await fetch("/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
 
-      const result = await response.json();
-      console.log("SERVER RESPONSE:", result);
-
-      showFeedback(
-        "Thank you — your message has been sent. I'll get back to you shortly.",
-        "success"
-      );
-
-      form.reset();
-
-    } catch (error) {
-
-      console.error(error);
-
-      showFeedback(
-        "Failed to send message.",
-        "error"
-      );
-
-    } finally {
-
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.classList.remove("is-loading");
+      if (!response.ok) {
+        throw new Error("Request failed with status " + response.status);
       }
 
+      await response.json();
+
+      window.showToast("Message sent successfully!", "success");
+
+      setButtonState("sent");
+      form.reset();
+
+      // Restore button after 2 s, then allow new submissions
+      setTimeout(function () {
+        setButtonState("idle");
+        isSubmitting = false;
+      }, 2000);
+    } catch (err) {
+      console.error(err);
+
+      window.showToast("Failed to send message.", "error");
+
+      setButtonState("error");
+      isSubmitting = false;
     }
-
   });
-
 })();

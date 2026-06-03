@@ -1,89 +1,127 @@
 (function () {
   "use strict";
 
-  const about = document.getElementById("about");
-  if (!about || !about.classList.contains("about")) return;
+  var about = document.getElementById("about");
+  if (!about) return;
 
-  /* ─── Scroll reveal ─── */
+  /* ─── 1. Scroll reveal ─── */
   if (window.PortfolioReveal) {
     PortfolioReveal.observe(".about__header");
-    PortfolioReveal.observe(".about__text");
-    PortfolioReveal.observe(".about__profile");
-    PortfolioReveal.observe(".about__card");
+    PortfolioReveal.observe(".about__left");
+    PortfolioReveal.observe(".about__right");
   }
 
-  /* ─── Card shine micro-interaction (desktop) ─── */
-  const cards = about.querySelectorAll(".about__card");
-  const finePointer = window.matchMedia("(pointer: fine)").matches;
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var finePointer = window.matchMedia("(pointer: fine)").matches;
+  var reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
 
-  if (finePointer && !reducedMotion) {
-    cards.forEach((card) => {
-      card.addEventListener(
-        "mousemove",
-        (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = ((e.clientX - rect.left) / rect.width) * 100;
-          const y = ((e.clientY - rect.top) / rect.height) * 100;
-          card.style.setProperty("--shine-x", `${x}%`);
-          card.style.setProperty("--shine-y", `${y}%`);
-        },
-        { passive: true }
-      );
+  /* ─── 2. Profile card shine (mousemove → CSS custom props) ─── */
+  var profileCard = about.querySelector(".about__profile-card");
 
-      card.addEventListener("mouseleave", () => {
-        card.style.removeProperty("--shine-x");
-        card.style.removeProperty("--shine-y");
-      });
+  if (profileCard && finePointer && !reducedMotion) {
+    profileCard.addEventListener(
+      "mousemove",
+      function (e) {
+        var rect = profileCard.getBoundingClientRect();
+        var x = ((e.clientX - rect.left) / rect.width) * 100;
+        var y = ((e.clientY - rect.top) / rect.height) * 100;
+        profileCard.style.setProperty("--shine-x", x + "%");
+        profileCard.style.setProperty("--shine-y", y + "%");
+      },
+      { passive: true },
+    );
+
+    profileCard.addEventListener("mouseleave", function () {
+      profileCard.style.removeProperty("--shine-x");
+      profileCard.style.removeProperty("--shine-y");
     });
   }
 
-  /* ─── Subtle tilt on profile card ─── */
-  const profile = about.querySelector(".about__profile");
-  if (profile && finePointer && !reducedMotion) {
-    let rafId = null;
-    let targetRX = 0;
-    let targetRY = 0;
-    let currentRX = 0;
-    let currentRY = 0;
+  /* ─── 3. Profile image fallback ─── */
+  var profileImg = about.querySelector(".about__profile-img");
+  var profileAvatar = about.querySelector(".about__profile-avatar");
 
-    function animate() {
-      currentRX += (targetRX - currentRX) * 0.08;
-      currentRY += (targetRY - currentRY) * 0.08;
+  if (profileImg && profileAvatar) {
+    var src = profileImg.getAttribute("src");
+    if (!src || src === "") {
+      profileImg.style.display = "none";
+      profileAvatar.classList.add("is-shown");
+    } else {
+      profileImg.addEventListener("error", function () {
+        profileImg.style.display = "none";
+        profileAvatar.classList.add("is-shown");
+      });
+    }
+  }
 
-      profile.style.transform = `perspective(800px) rotateX(${currentRX}deg) rotateY(${currentRY}deg)`;
+  /* ─── 4. Stat counter animation ─── */
+  var statsWrap = about.querySelector(".about__stats");
+  if (!statsWrap) return;
 
-      if (
-        Math.abs(currentRX - targetRX) < 0.01 &&
-        Math.abs(currentRY - targetRY) < 0.01 &&
-        targetRX === 0 &&
-        targetRY === 0
-      ) {
-        rafId = null;
-        profile.style.transform = "";
+  var countersRun = false;
+
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  function animateCounter(el, target, suffix, duration) {
+    var startTime = null;
+
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      var elapsed = timestamp - startTime;
+      var progress = Math.min(elapsed / duration, 1);
+      var eased = easeOutCubic(progress);
+      var current = Math.round(eased * target);
+      el.textContent = current + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = target + suffix;
+      }
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  function runCounters() {
+    if (countersRun) return;
+    countersRun = true;
+
+    var statValues = statsWrap.querySelectorAll(
+      ".about__stat-value[data-count]",
+    );
+
+    statValues.forEach(function (el) {
+      var target = parseInt(el.getAttribute("data-count"), 10);
+      var suffix = el.getAttribute("data-suffix") || "";
+      if (isNaN(target)) return;
+
+      if (reducedMotion) {
+        el.textContent = target + suffix;
         return;
       }
 
-      rafId = requestAnimationFrame(animate);
-    }
-
-    profile.addEventListener(
-      "mousemove",
-      (e) => {
-        const rect = profile.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        targetRY = x * 4;
-        targetRX = y * -4;
-        if (!rafId) rafId = requestAnimationFrame(animate);
-      },
-      { passive: true }
-    );
-
-    profile.addEventListener("mouseleave", () => {
-      targetRX = 0;
-      targetRY = 0;
-      if (!rafId) rafId = requestAnimationFrame(animate);
+      el.textContent = "0" + suffix;
+      animateCounter(el, target, suffix, 1200);
     });
+  }
+
+  if ("IntersectionObserver" in window) {
+    var statsObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            runCounters();
+            statsObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -10% 0px", threshold: 0.25 },
+    );
+    statsObserver.observe(statsWrap);
+  } else {
+    runCounters(); /* Fallback: run immediately */
   }
 })();

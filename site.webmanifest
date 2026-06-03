@@ -1,0 +1,27 @@
+{
+  "name": "Gunadeep P — Portfolio",
+  "short_name": "Gunadeep",
+  "description": "Front-End Developer & 11th Class Student from Andhra Pradesh. Building modern, responsive websites.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f5f5",
+  "theme_color": "#2f2f2f",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "favicon.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    }
+  ]
+}

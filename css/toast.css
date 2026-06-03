@@ -1,0 +1,201 @@
+/* ─── Toast Notifications ─── */
+
+.toast-container {
+  position: fixed;
+  top: calc(var(--navbar-height) + 1rem);
+  right: 1.25rem;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  width: clamp(18rem, 90vw, 22rem);
+  pointer-events: none;
+}
+
+/* ─── Individual toast ─── */
+.toast {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem 0.9rem 1.25rem;
+  background: var(--glass-bg-panel);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border-light);
+  border-left: 4px solid transparent;
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.5) inset,
+    var(--glass-shadow-hover);
+  overflow: hidden;
+  pointer-events: all;
+
+  /* Hidden off-screen to the right by default */
+  opacity: 0;
+  transform: translateX(calc(100% + 2rem));
+  transition:
+    transform 0.42s cubic-bezier(0.34, 1.15, 0.64, 1),
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+.toast.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.toast.is-hiding {
+  opacity: 0;
+  transform: translateX(calc(100% + 2rem));
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Accent border colours ─── */
+.toast--success { border-left-color: #22c55e; }
+.toast--error   { border-left-color: #ef4444; }
+
+/* ─── Icon badge ─── */
+.toast__icon {
+  flex-shrink: 0;
+  width: 1.875rem;
+  height: 1.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+}
+
+.toast--success .toast__icon {
+  background: rgba(34, 197, 94, 0.12);
+  color: #16a34a;
+}
+
+.toast--error .toast__icon {
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+}
+
+.toast__icon svg {
+  width: 0.9375rem;
+  height: 0.9375rem;
+}
+
+/* ─── Text body ─── */
+.toast__body {
+  flex: 1;
+  min-width: 0;
+  padding-top: 0.1rem;
+}
+
+.toast__title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+  color: var(--color-text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.toast__message {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+/* ─── Close button ─── */
+.toast__close {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: 0.05rem;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  opacity: 0.45;
+  transition:
+    opacity var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.toast__close:hover {
+  opacity: 1;
+  background: rgba(17, 17, 17, 0.07);
+}
+
+.toast__close svg {
+  width: 0.8125rem;
+  height: 0.8125rem;
+}
+
+/* ─── Progress bar ─── */
+.toast__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  transform-origin: left center;
+}
+
+.toast--success .toast__progress { background: rgba(34, 197, 94, 0.45); }
+.toast--error   .toast__progress { background: rgba(239, 68, 68, 0.4); }
+
+.toast__progress.is-running {
+  animation: toastProgress var(--toast-duration, 4000ms) linear forwards;
+}
+
+@keyframes toastProgress {
+  from { transform: scaleX(1); }
+  to   { transform: scaleX(0); }
+}
+
+/* ─── Mobile: slide up from bottom ─── */
+@media (max-width: 560px) {
+  .toast-container {
+    top: auto;
+    bottom: 1.25rem;
+    right: 1rem;
+    left: 1rem;
+    width: auto;
+  }
+
+  .toast {
+    transform: translateY(calc(100% + 1.5rem));
+  }
+
+  .toast.is-visible {
+    transform: translateY(0);
+  }
+
+  .toast.is-hiding {
+    transform: translateY(calc(100% + 1.5rem));
+  }
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  .toast,
+  .toast.is-hiding {
+    transform: none !important;
+    transition: opacity 0.2s ease !important;
+  }
+
+  .toast__progress.is-running {
+    animation: none;
+    transform: scaleX(0);
+  }
+}
+
+/* ─── Backdrop filter fallback ─── */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .toast {
+    background: var(--glass-bg-fallback);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
