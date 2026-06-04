@@ -40,12 +40,11 @@
         <meta name="theme-color" content="#2f2f2f" />
 
         <!-- ─── Canonical ─── -->
-        <!-- ⚠️  Replace https://yourdomain.com with your live domain before deploying -->
-        <link rel="canonical" href="https://yourdomain.com/" />
+        <link rel="canonical" href="https://11th-gunadeep.netlify.app/" />
 
         <!-- ─── Open Graph (Facebook / LinkedIn / WhatsApp) ─── -->
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://yourdomain.com/" />
+        <meta property="og:url" content="https://11th-gunadeep.netlify.app/" />
         <meta property="og:site_name" content="Gunadeep Portfolio" />
         <meta
             property="og:title"
@@ -57,7 +56,7 @@
         />
         <meta
             property="og:image"
-            content="https://yourdomain.com/assets/images/og-image.png"
+            content="https://11th-gunadeep.netlify.app/assets/images/og-image.png"
         />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -79,7 +78,7 @@
         />
         <meta
             name="twitter:image"
-            content="https://yourdomain.com/assets/images/og-image.png"
+            content="https://11th-gunadeep.netlify.app/assets/images/og-image.png"
         />
         <meta
             name="twitter:image:alt"
@@ -102,11 +101,11 @@
                 "@context": "https://schema.org",
                 "@type": "Person",
                 "name": "Gunadeep P",
-                "url": "https://yourdomain.com/",
+                "url": "https://11th-gunadeep.netlify.app/",
                 "jobTitle": "Front-End Developer",
                 "description": "11th Class Student from Andhra Pradesh and Front-End Developer who builds modern, responsive websites using HTML, CSS and JavaScript.",
                 "email": "puligundlaguna321@gmail.com",
-                "image": "https://yourdomain.com/assets/images/image.png",
+                "image": "https://11th-gunadeep.netlify.app/assets/images/image.png",
                 "sameAs": [
                     "https://github.com/GUNADEEP-321",
                     "mailto:puligundlaguna321@gmail.com"
@@ -489,7 +488,7 @@
                                 <div class="hero__frame-inner">
                                     <img
                                         class="hero__portrait"
-                                        src="assets/images/Portfolio`image.png"
+                                        src="assets/images/image.png"
                                         alt="Gunadeep &mdash; Front-End Developer"
                                         width="480"
                                         height="600"
@@ -683,6 +682,19 @@
                                 <div class="about__stat">
                                     <span
                                         class="about__stat-value"
+                                        id="stat-visitors"
+                                        data-count="0"
+                                        data-suffix=""
+                                        >0</span
+                                    >
+                                    <span class="about__stat-label"
+                                        >Total<br />Visitors</span
+                                    >
+                                </div>
+                                <div class="about__stat">
+                                    <span
+                                        class="about__stat-value"
+                                        id="stat-projects"
                                         data-count="4"
                                         data-suffix="+"
                                         >4+</span
@@ -694,6 +706,7 @@
                                 <div class="about__stat">
                                     <span
                                         class="about__stat-value"
+                                        id="stat-technologies"
                                         data-count="6"
                                         data-suffix="+"
                                         >6+</span
@@ -1572,6 +1585,29 @@
                                 >Projects built</span
                             >
                         </div>
+                        <div class="projects__search">
+                            <svg
+                                class="projects__search-icon"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                            <input
+                                type="text"
+                                class="projects__search-input"
+                                id="projects-search"
+                                placeholder="Search projects..."
+                                aria-label="Search projects"
+                            />
+                        </div>
                         <div
                             class="projects__filters"
                             role="group"
@@ -1592,6 +1628,14 @@
                                 aria-pressed="false"
                             >
                                 Frontend
+                            </button>
+                            <button
+                                type="button"
+                                class="projects__filter"
+                                data-filter="full-stack"
+                                aria-pressed="false"
+                            >
+                                Full Stack
                             </button>
                             <button
                                 type="button"
@@ -2117,7 +2161,7 @@
                         <article
                             class="articles__card articles__card--featured"
                             data-category="learning"
-                            data-search="how i started web development learning journey beginner html css javascript"
+                            data-search="student to developer learning journey beginner html css javascript"
                         >
                             <span class="articles__featured-badge"
                                 >Featured</span
@@ -2168,19 +2212,14 @@
                                                 stroke-linecap="round"
                                             />
                                         </svg>
-                                        6 min read
+                                        8 min read
                                     </span>
                                 </div>
                                 <h3 class="articles__card-title">
-                                    How I Started Web Development
+                                    From Student to Developer
                                 </h3>
                                 <p class="articles__card-desc">
-                                    My journey began with curiosity — I wanted
-                                    to know how websites work. I started with
-                                    simple HTML pages, then learned CSS to style
-                                    them and JavaScript to add interactivity.
-                                    Small daily practice helped me build
-                                    confidence step by step.
+                                    My learning journey, challenges, projects and lessons that helped me grow as a front-end developer.
                                 </p>
                                 <a href="#" class="articles__read">
                                     Read More
@@ -2764,6 +2803,29 @@
                                 <span class="resume__download-text"
                                     >Download Resume</span
                                 >
+                            </a>
+
+                            <a
+                                href="resume.html"
+                                class="resume__view"
+                                target="_blank"
+                                aria-label="View Gunadeep's resume online"
+                            >
+                                <svg
+                                    class="resume__view-icon"
+                                    viewBox="0 0 16 16"
+                                    fill="none"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M10 3H3v10h10v-3M10 3h3v3M6.5 9.5l6-6"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                                <span>View Online</span>
                             </a>
 
                             <p class="resume__note">

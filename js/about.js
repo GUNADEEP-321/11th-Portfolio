@@ -55,7 +55,57 @@
     }
   }
 
-  /* ─── 4. Stat counter animation ─── */
+  /* ─── 4. Calculate dynamic stats ─── */
+  var totalProjects = document.querySelectorAll(".projects__card").length;
+  var technologiesSet = new Set();
+
+  // Add skills from Skills section
+  var skillCards = document.querySelectorAll(".skills__card .skills__name");
+  skillCards.forEach(function (el) {
+    technologiesSet.add(el.textContent.trim());
+  });
+
+  // Add tech tags from Projects section
+  var techTags = document.querySelectorAll(".projects__tech-tag");
+  techTags.forEach(function (el) {
+    technologiesSet.add(el.textContent.trim());
+  });
+
+  var totalTechnologies = technologiesSet.size;
+
+  // Update data-count attributes
+  var statProjects = document.getElementById("stat-projects");
+  var statTechnologies = document.getElementById("stat-technologies");
+  if (statProjects) {
+    statProjects.setAttribute("data-count", totalProjects);
+  }
+  if (statTechnologies) {
+    statTechnologies.setAttribute("data-count", totalTechnologies);
+  }
+
+  /* ─── 5. Fetch total visitors from API ─── */
+  var statVisitors = document.getElementById("stat-visitors");
+  var totalVisitors = 0;
+
+  async function fetchVisitorCount() {
+    try {
+      var response = await fetch("/api/stats");
+      if (response.ok) {
+        var data = await response.json();
+        totalVisitors = data.data.totalVisitors || 0;
+        if (statVisitors) {
+          statVisitors.setAttribute("data-count", totalVisitors);
+        }
+      }
+    } catch (err) {
+      console.error("Failed to fetch visitor count:", err);
+      totalVisitors = 0;
+    }
+  }
+
+  fetchVisitorCount();
+
+  /* ─── 6. Stat counter animation ─── */
   var statsWrap = about.querySelector(".about__stats");
   if (!statsWrap) return;
 

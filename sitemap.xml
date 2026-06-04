@@ -6,11 +6,10 @@
 
   <!--
     Single-page portfolio — all sections live at the root URL.
-    Replace "https://yourdomain.com" with your live domain before deploying.
   -->
 
   <url>
-    <loc>https://yourdomain.com/</loc>
+    <loc>https://11th-gunadeep.netlify.app/</loc>
     <lastmod>2026-06-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>

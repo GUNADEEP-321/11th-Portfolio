@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gunadeep - Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f0f4f8;
+            padding: 2rem;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+
+        .print-btn {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 100;
+            padding: 0.75rem 1.5rem;
+            background: #1e40af;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .print-btn:hover {
+            background: #1e3a8a;
+        }
+
+        .resume-container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 60px rgba(30, 64, 175, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* A4 dimensions */
+        .resume-page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm;
+        }
+
+        /* Header Section */
+        .resume-header {
+            text-align: center;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #1e40af;
+            margin-bottom: 1.5rem;
+        }
+
+        .resume-name {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+
+        .resume-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: 1rem;
+        }
+
+        .resume-contact {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #475569;
+        }
+
+        .contact-item a {
+            color: #1e40af;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Section Styles */
+        .resume-section {
+            margin-bottom: 1.25rem;
+        }
+
+        .section-header {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1e40af;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        /* Professional Summary */
+        .summary-text {
+            font-size: 0.9375rem;
+            color: #334155;
+            line-height: 1.7;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .skill-category {
+            font-size: 0.875rem;
+        }
+
+        .skill-category-title {
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+            font-size: 0.9375rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.375rem;
+        }
+
+        .skill-tag {
+            background: #eff6ff;
+            color: #1e40af;
+            padding: 0.25rem 0.625rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Projects Section */
+        .project-card {
+            margin-bottom: 1rem;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.375rem;
+        }
+
+        .project-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 0.75rem;
+            font-size: 0.8125rem;
+        }
+
+        .project-links a {
+            color: #1e40af;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.375rem;
+            margin-bottom: 0.375rem;
+        }
+
+        .project-tech-tag {
+            color: #475569;
+            font-size: 0.75rem;
+            background: #f1f5f9;
+            padding: 0.125rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .project-desc {
+            font-size: 0.875rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        /* Education Section */
+        .education-item {
+            margin-bottom: 0.75rem;
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.25rem;
+        }
+
+        .education-school {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .education-degree {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #1e40af;
+        }
+
+        .education-details {
+            font-size: 0.8125rem;
+            color: #475569;
+        }
+
+        /* Two Columns for Strengths & Languages */
+        .two-col-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .list-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .list-section li {
+            font-size: 0.875rem;
+            color: #475569;
+            margin-bottom: 0.375rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .list-section li::before {
+            content: "•";
+            color: #1e40af;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .print-btn {
+                display: none !important;
+            }
+
+            .resume-container {
+                box-shadow: none;
+            }
+
+            .resume-page {
+                padding: 15mm;
+            }
+
+            @page {
+                size: A4;
+                margin: 0;
+            }
+        }
+
+        /* Mobile Preview Styles */
+        @media (max-width: 800px) {
+            body {
+                padding: 0;
+                background: white;
+            }
+
+            .print-btn {
+                display: none;
+            }
+
+            .resume-page {
+                width: 100%;
+                padding: 1.5rem;
+                min-height: auto;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .two-col-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resume-contact {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+
+    <div class="resume-container">
+        <div class="resume-page">
+            <!-- Header -->
+            <header class="resume-header">
+                <h1 class="resume-name">Gunadeep</h1>
+                <p class="resume-title">Front-End Developer & Student</p>
+                <div class="resume-contact">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <a href="mailto:puligundlaguna321@gmail.com">puligundlaguna321@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>Andhra Pradesh, India</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>🔗</span>
+                        <a href="https://github.com/GUNADEEP-321" target="_blank">github.com/GUNADEEP-321</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>🌐</span>
+                        <a href="https://11th-gunadeep.netlify.app" target="_blank">11th-gunadeep.netlify.app</a>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Professional Summary -->
+            <section class="resume-section">
+                <h2 class="section-header">Professional Summary</h2>
+                <p class="summary-text">
+                    Passionate 11th-grade student and front-end developer with hands-on experience building modern, responsive websites using HTML, CSS, and JavaScript. Proficient in creating clean, user-friendly interfaces and implementing smooth animations. Committed to continuous learning and balancing academic excellence with technical growth. Seeking opportunities to apply skills in real-world projects.
+                </p>
+            </section>
+
+            <!-- Technical Skills -->
+            <section class="resume-section">
+                <h2 class="section-header">Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">Frontend</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Bootstrap</span>
+                            <span class="skill-tag">Responsive Design</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">Tools & Others</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Git & GitHub</span>
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Taro</span>
+                            <span class="skill-tag">UI/UX Design</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">Soft Skills</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Problem Solving</span>
+                            <span class="skill-tag">Teamwork</span>
+                            <span class="skill-tag">Time Management</span>
+                            <span class="skill-tag">Quick Learner</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Projects -->
+            <section class="resume-section">
+                <h2 class="section-header">Featured Projects</h2>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">TechBlog Website</h3>
+                        <div class="project-links">
+                            <a href="#" target="_blank">Live Demo</a>
+                            <a href="#" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="project-tech-tag">HTML5</span>
+                        <span class="project-tech-tag">CSS3</span>
+                        <span class="project-tech-tag">JavaScript</span>
+                        <span class="project-tech-tag">Responsive Design</span>
+                    </div>
+                    <p class="project-desc">
+                        A fully responsive blog-style website with modern UI, clean typography, and smooth interactive design patterns. Implemented mobile-first approach for seamless viewing on all devices.
+                    </p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Responsive Navbar Component</h3>
+                        <div class="project-links">
+                            <a href="#" target="_blank">Live Demo</a>
+                            <a href="#" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="project-tech-tag">HTML5</span>
+                        <span class="project-tech-tag">CSS3</span>
+                        <span class="project-tech-tag">JavaScript</span>
+                    </div>
+                    <p class="project-desc">
+                        A polished, fully responsive navigation system featuring animated transitions, mobile hamburger menu, and smooth scroll interactions.
+                    </p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Portfolio Website</h3>
+                        <div class="project-links">
+                            <a href="#" target="_blank">Live Demo</a>
+                            <a href="#" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="project-tech-tag">HTML5</span>
+                        <span class="project-tech-tag">CSS3</span>
+                        <span class="project-tech-tag">JavaScript</span>
+                        <span class="project-tech-tag">Bootstrap</span>
+                    </div>
+                    <p class="project-desc">
+                        Personal portfolio with glassmorphism design, scroll-triggered animations, and a fully responsive layout. Features project filtering and a contact form with email integration.
+                    </p>
+                </div>
+            </section>
+
+            <div class="two-col-grid">
+                <!-- Education -->
+                <section class="resume-section">
+                    <h2 class="section-header">Education</h2>
+                    <div class="education-item">
+                        <div class="education-header">
+                            <div>
+                                <h3 class="education-school">High School</h3>
+                                <p class="education-degree">11th Grade</p>
+                            </div>
+                            <span class="education-details">2024 - Present</span>
+                        </div>
+                        <p class="education-details">
+                            Focus on science and mathematics, with active pursuit of programming and web development alongside academics.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Languages -->
+                <section class="resume-section list-section">
+                    <h2 class="section-header">Languages</h2>
+                    <ul>
+                        <li>Telugu (Native)</li>
+                        <li>English (Professional)</li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- Strengths -->
+            <section class="resume-section list-section">
+                <h2 class="section-header">Strengths</h2>
+                <ul>
+                    <li>Strong work ethic and dedication to continuous improvement</li>
+                    <li>Quick learner with ability to adapt to new technologies</li>
+                    <li>Attention to detail and focus on writing clean, maintainable code</li>
+                    <li>Excellent time management balancing academics and coding practice</li>
+                    <li>Creative problem-solving approach to development challenges</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

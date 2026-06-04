@@ -11,5 +11,5 @@ Disallow: /package.json
 Disallow: /package-lock.json
 Disallow: /.npm-cache/
 
-# Sitemap location — replace with your live domain
-Sitemap: https://yourdomain.com/sitemap.xml
+# Sitemap location
+Sitemap: https://11th-gunadeep.netlify.app/sitemap.xml

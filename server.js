@@ -14,6 +14,10 @@ app.set("trust proxy", 1);
 const PORT = process.env.PORT || 5000;
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// In-memory visitor counter (ready to replace with database like Redis/PostgreSQL)
+let visitorCount = 0;
+const visitorTracker = new Set(); // Tracks unique visitors by IP temporarily (for demo)
+
 const contactLimiter = rateLimit({
   windowMs: 60 * 1000,
   limit: 5,
@@ -105,7 +109,13 @@ function buildAutoReplyHtml(name) {
   `;
 }
 
+// Visitor count middleware: track unique visitors by IP
 app.get("/", (req, res) => {
+  const ip = req.ip || req.connection.remoteAddress || "unknown";
+  if (!visitorTracker.has(ip)) {
+    visitorTracker.add(ip);
+    visitorCount++;
+  }
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
@@ -113,6 +123,16 @@ app.get("/health", (req, res) => {
   return res.status(200).json({
     success: true,
     status: "OK",
+  });
+});
+
+// Get portfolio stats
+app.get("/api/stats", (req, res) => {
+  return res.status(200).json({
+    success: true,
+    data: {
+      totalVisitors: visitorCount,
+    },
   });
 });
 
