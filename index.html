@@ -141,8 +141,33 @@
         <link rel="stylesheet" href="css/toast.css" />
         <link rel="stylesheet" href="css/modal.css" />
         <link rel="stylesheet" href="css/footer.css" />
+        <link rel="stylesheet" href="css/loader.css" />
+        <link rel="stylesheet" href="css/cursor.css" />
     </head>
     <body>
+        <!-- Premium Full-Screen Loader -->
+        <div class="loader" id="loader" aria-hidden="true">
+            <!-- Floating Particles -->
+            <div class="loader__particles" aria-hidden="true">
+                <div class="loader__particle"></div>
+                <div class="loader__particle"></div>
+                <div class="loader__particle"></div>
+                <div class="loader__particle"></div>
+                <div class="loader__particle"></div>
+                <div class="loader__particle"></div>
+            </div>
+
+            <!-- Loader Content -->
+            <div class="loader__content" aria-live="polite">
+                <h1 class="loader__title">Gunadeep</h1>
+                <div class="loader__progress-wrapper">
+                    <div class="loader__progress" id="loader-progress"></div>
+                </div>
+                <div class="loader__percentage" id="loader-percentage">0%</div>
+            </div>
+        </div>
+
+        <div class="main-content">
         <header class="navbar" id="navbar" role="banner">
             <div class="navbar__inner">
                 <a
@@ -2166,6 +2191,7 @@
                             <span class="articles__featured-badge"
                                 >Featured</span
                             >
+                            <div class="articles__card-spotlight" aria-hidden="true"></div>
                             <div class="articles__card-visual">
                                 <span
                                     class="articles__card-pattern"
@@ -2245,6 +2271,7 @@
                             data-category="html"
                             data-search="html tips beginners semantic tags structure"
                         >
+                            <div class="articles__card-spotlight" aria-hidden="true"></div>
                             <div class="articles__card-visual">
                                 <span
                                     class="articles__card-pattern"
@@ -2326,6 +2353,7 @@
                             data-category="css"
                             data-search="css tricks flexbox grid spacing variables"
                         >
+                            <div class="articles__card-spotlight" aria-hidden="true"></div>
                             <div class="articles__card-visual">
                                 <span
                                     class="articles__card-pattern"
@@ -2407,6 +2435,7 @@
                             data-category="javascript"
                             data-search="javascript learning journey functions dom events"
                         >
+                            <div class="articles__card-spotlight" aria-hidden="true"></div>
                             <div class="articles__card-visual">
                                 <span
                                     class="articles__card-pattern"
@@ -3351,7 +3380,10 @@
             <!-- /.modal__container -->
         </div>
         <!-- /#project-modal -->
+        </div> <!-- /.main-content -->
 
+        <script src="js/loader.js"></script>
+        <script src="js/interactions.js"></script>
         <script src="js/scroll.js"></script>
         <script src="js/reveal.js"></script>
         <script src="js/navbar.js"></script>

@@ -125,6 +125,7 @@
   overflow: hidden;
   animation: skillsFloat 6s ease-in-out infinite;
   animation-play-state: paused;
+  will-change: transform;
 }
 
 .skills__card.is-visible {
@@ -180,13 +181,14 @@
   position: absolute;
   inset: 0;
   background: radial-gradient(
-    500px circle at var(--shine-x, 50%) var(--shine-y, 50%),
+    500px circle at var(--spot-x, 50%) var(--spot-y, 50%),
     rgba(255, 255, 255, 0.5),
     transparent 42%
   );
   opacity: 0;
   transition: opacity var(--transition-fast);
   pointer-events: none;
+  will-change: opacity;
 }
 
 .skills__card:hover .skills__card-shine {

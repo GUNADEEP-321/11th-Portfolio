@@ -271,18 +271,25 @@
   box-shadow: var(--shadow-soft);
   overflow: hidden;
   opacity: 0;
-  transform: translateY(1.75rem);
+  transform: translateY(1.75rem) scale(0.96);
   transition:
-    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.6s cubic-bezier(0.34, 1.2, 0.64, 1),
+    opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.7s cubic-bezier(0.34, 1.2, 0.64, 1),
     box-shadow var(--transition-smooth),
     border-color var(--transition-fast);
+  will-change: transform;
 }
 
 .articles__card.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
+
+.articles__card.is-visible:nth-child(1) { transition-delay: 0.05s; }
+.articles__card.is-visible:nth-child(2) { transition-delay: 0.1s; }
+.articles__card.is-visible:nth-child(3) { transition-delay: 0.15s; }
+.articles__card.is-visible:nth-child(4) { transition-delay: 0.2s; }
+.articles__card.is-visible:nth-child(5) { transition-delay: 0.25s; }
 
 .articles__card.is-hidden {
   display: none;
@@ -295,11 +302,11 @@
 @keyframes articlesCardIn {
   from {
     opacity: 0;
-    transform: translateY(0.75rem);
+    transform: translateY(0.75rem) scale(0.98);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -362,6 +369,26 @@
   flex-direction: column;
   flex: 1;
   padding: 1.375rem;
+}
+
+/* Spotlight */
+.articles__card-spotlight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px circle at var(--spot-x, 50%) var(--spot-y, 30%),
+    rgba(255, 255, 255, 0.28),
+    transparent 45%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  pointer-events: none;
+  z-index: 1;
+  will-change: opacity;
+}
+
+.articles__card:hover .articles__card-spotlight {
+  opacity: 1;
 }
 
 .articles__card-meta {

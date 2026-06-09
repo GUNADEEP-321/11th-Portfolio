@@ -93,6 +93,16 @@
         black 20%,
         transparent 75%
     );
+    animation: heroGridFloat 20s linear infinite;
+}
+
+@keyframes heroGridFloat {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(4rem, 4rem);
+    }
 }
 
 /* Floating particle dots */
@@ -990,7 +1000,8 @@
     .hero__frame-wrapper,
     .hero__frame-wrapper::before,
     .hero__badge,
-    .hero__stat-card {
+    .hero__stat-card,
+    .hero__grid {
         animation: none !important;
     }
 

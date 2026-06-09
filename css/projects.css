@@ -258,22 +258,30 @@
 
 /* ─── Card ─── */
 .projects__card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    background: var(--glass-bg-elevated);
-    backdrop-filter: var(--glass-blur-sm);
-    -webkit-backdrop-filter: var(--glass-blur-sm);
-    border: 1px solid var(--glass-border-light);
-    border-radius: 1.25rem;
-    box-shadow: var(--glass-shadow);
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(2rem) scale(0.98);
-    transition:
-        opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1),
-        transform 0.55s cubic-bezier(0.34, 1.2, 0.64, 1),
-        var(--glass-transition);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--glass-bg-elevated);
+  backdrop-filter: var(--glass-blur-sm);
+  -webkit-backdrop-filter: var(--glass-blur-sm);
+  border: 1px solid var(--glass-border-light);
+  border-radius: 1.25rem;
+  box-shadow: var(--glass-shadow);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(2rem) scale(0.98);
+  transition:
+    opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.55s cubic-bezier(0.34, 1.2, 0.64, 1),
+    border-radius 0.4s cubic-bezier(0.34, 1.2, 0.64, 1),
+    box-shadow 0.4s cubic-bezier(0.34, 1.2, 0.64, 1),
+    var(--glass-transition);
+  will-change: transform;
+}
+
+.projects__card:hover {
+    border-radius: 1.5rem;
+    box-shadow: var(--glass-shadow-hover), 0 20px 40px rgba(17, 17, 17, 0.08);
 }
 
 .projects__card.is-visible {
@@ -328,17 +336,18 @@
 
 /* Spotlight */
 .projects__card-spotlight {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-        600px circle at var(--spot-x, 50%) var(--spot-y, 30%),
-        rgba(255, 255, 255, 0.32),
-        transparent 45%
-    );
-    opacity: 0;
-    transition: opacity var(--transition-fast);
-    pointer-events: none;
-    z-index: 2;
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px circle at var(--spot-x, 50%) var(--spot-y, 30%),
+    rgba(255, 255, 255, 0.32),
+    transparent 45%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  pointer-events: none;
+  z-index: 2;
+  will-change: opacity;
 }
 
 .projects__card:hover .projects__card-spotlight {

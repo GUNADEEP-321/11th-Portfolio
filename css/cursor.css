@@ -1,0 +1,76 @@
+/* ─── Premium Custom Cursor ─── */
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    height 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.25s ease;
+  will-change: transform; /* Only transform for GPU acceleration */
+}
+
+.cursor-dot {
+  background: var(--color-accent);
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.15),
+    0 0 40px var(--color-accent);
+}
+
+.cursor-glow {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, transparent 70%);
+  z-index: 9998;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  mix-blend-mode: screen;
+  filter: blur(20px);
+}
+
+/* Hover states for cursor */
+.cursor-hoverable {
+  width: 56px;
+  height: 56px;
+  background: rgba(56, 189, 248, 0.12);
+  box-shadow:
+    0 0 0 2px var(--color-accent),
+    0 0 60px rgba(56, 189, 248, 0.25);
+}
+
+.cursor-glow-hoverable {
+  opacity: 0.6;
+}
+
+/* Hide default cursor and custom cursor on mobile */
+@media (pointer: coarse), (max-width: 768px) {
+  .cursor,
+  .cursor-glow {
+    display: none;
+  }
+
+  body {
+    cursor: auto !important;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .cursor,
+  .cursor-glow {
+    display: none;
+  }
+
+  body {
+    cursor: auto !important;
+  }
+}
